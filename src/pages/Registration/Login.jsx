@@ -1,6 +1,7 @@
 import { useForm } from "react-hook-form";
 import { MdOutlineLogin } from "react-icons/md";
 import { Link } from "react-router-dom";
+import GoogleLogin from "../../components/shared/GoogleLogin";
 
 
 const Login = () => {
@@ -37,7 +38,7 @@ const Login = () => {
                                 {/* <p className=' text-red-500'>{error}</p> */}
                                 <button className="btn bg-teal-600 hover:bg-teal-700 text-white rounded-full mt-4"><MdOutlineLogin className='text-xl' />Login</button>
                                 <p className='text-center my-2'>Have not any Account ? please <Link to={'/signup'} className='text-blue-600 '>Sign Up</Link></p>
-                                {/* <div><GoogleLogin></GoogleLogin></div> */}
+                                <div><GoogleLogin></GoogleLogin></div>
                             </fieldset>
                         </form>
                     </div>

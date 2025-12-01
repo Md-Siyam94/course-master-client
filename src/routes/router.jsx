@@ -8,6 +8,7 @@ import Login from "../pages/Registration/Login";
 import Singup from "../pages/Registration/Singup";
 import OurCourses from "../pages/All Courses/OurCourses";
 import AboutUs from "../pages/About me/AboutUs";
+import Blog from "../pages/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
         {
             path: '/our-courses',
             element: <OurCourses></OurCourses>
+        },
+        {
+            path: '/blog',
+            element: <Blog></Blog>
         },
         {
             path: '/about-us',

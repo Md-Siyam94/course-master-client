@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { FaRegCircleUser, FaRegUser } from 'react-icons/fa6';
 import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
+import { AuthContex } from '../../provider/AuthProvider';
 
 const Navbar = () => {
-    const user = false
+    const {user, logout} = useContext(AuthContex)
     const links = <>
         <li><NavLink to={"/"}
             className={({ isActive }) =>
@@ -16,14 +17,23 @@ const Navbar = () => {
         } to={'/our-courses'}>Our courses</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+        } to={'/blog'}>Blog</NavLink></li>
+        <li><NavLink className={({ isActive }) =>
+            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/about-us'}>About us</NavLink></li>
 
     </>
 
 
-    // todo: logout user
+    // logout user
     const handleLogOut = () => {
-        console.log('log out user');
+        logout()
+        .then(()=>{
+            
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
     return (
         <div className="navbar lg:px-20 bg-base-100 shadow-sm">
@@ -41,7 +51,7 @@ const Navbar = () => {
                 <a className="btn btn-ghost text-2xl font-semibold">SIK<span className='text-teal-500'>HOO</span></a>
             </div>
 
-            <div className="navbar-end gap-4">
+            <div className="navbar-end gap-6">
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu  menu-horizontal px-1">
                         {links}
