@@ -1,16 +1,30 @@
 import React from 'react';
+import { FaRegCircleUser, FaRegUser } from 'react-icons/fa6';
+import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 
 const Navbar = () => {
-    const user = true
+    const user = false
     const links = <>
-        <li><NavLink
-            className={(active) => active ? "text-red" : "text-black"}
+        <li><NavLink to={"/"}
+            className={({ isActive }) =>
+            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+        }
         >Home</NavLink></li>
-        <li><NavLink>My course</NavLink></li>
-        <li><NavLink>About us</NavLink></li>
+        <li><NavLink className={({ isActive }) =>
+            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+        } to={'/our-courses'}>Our courses</NavLink></li>
+        <li><NavLink className={({ isActive }) =>
+            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+        } to={'/about-us'}>About us</NavLink></li>
 
     </>
+
+
+    // todo: logout user
+    const handleLogOut = () => {
+        console.log('log out user');
+    }
     return (
         <div className="navbar lg:px-20 bg-base-100 shadow-sm">
             <div className="navbar-start">
@@ -23,13 +37,13 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
-                </div>
-                <a className="btn btn-ghost text-xl">daisyUI</a>
+                </div> 
+                <a className="btn btn-ghost text-2xl font-semibold">SIK<span className='text-teal-500'>HOO</span></a>
             </div>
 
             <div className="navbar-end gap-4">
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
+                    <ul className="menu  menu-horizontal px-1">
                         {links}
                     </ul>
                 </div>
@@ -44,13 +58,11 @@ const Navbar = () => {
                             <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-52 p-2 shadow">
                                 <li><Link>{user?.displayName}</Link></li>
                                 <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' /> My Account</NavLink></li>
-                                <li><NavLink to={"/dashboard/my-orders"} className='hover:text-green-500  '><RiShoppingCartLine className='text-xl' /> My Orders</NavLink></li>
-                                <li><NavLink to={"/dashboard/my-reviews"} className='hover:text-green-500  '><FaRegStar className='text-xl' /> Reviews</NavLink></li>
-                                <li><NavLink to={"/dashboard/wishlist"} className='hover:text-green-500  '><GoHeart className='text-xl' /> Wish List</NavLink></li>
+
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li>
                             </ul>
                         </div>
-                        </div> : <div className="flex gap-2"> <Link to={'/login'} className='lg:py-3 py-1 px-6 flex items-center gap-2  border rounded-full hover:bg-teal-600 hover:text-white '><FaRegCircleUser className='text-xl ' /> Sign up</Link>
+                        </div> : <div className="flex gap-2"> <Link to={'/login'} className='lg:py-3 py-1 px-6 flex items-center gap-2  border rounded-full hover:bg-teal-500 hover:text-white '><FaRegCircleUser className='text-xl ' /> Sign up</Link>
                         </div>
                     }
                 </div>
