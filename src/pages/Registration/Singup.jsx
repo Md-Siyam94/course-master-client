@@ -1,17 +1,63 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { MdOutlineLogin } from 'react-icons/md';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import GoogleLogin from '../../components/shared/GoogleLogin';
+import { AuthContex } from '../../provider/AuthProvider';
+import useAxiosPublic from '../../custom hooks/useAxiosPublic';
+
 
 const Singup = () => {
+    const [error, setError] = useState("")
+    const { singUpUser, updateUserProfile } = useContext(AuthContex)
+    const axiosPublic = useAxiosPublic()
+    const navigate = useNavigate()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = async (data) => {
+        setError("")
+        const name = data?.name;
+        const email = data?.email;
+        const password = data?.password;
+  
 
-     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-           const onSubmit = async(data)=>{
-            console.log(data);
-           }
+        singUpUser(email, password)
+            .then(res => {
+                // update user profile
+                updateUserProfile({ displayName: name, photoURL: "https://i.ibb.co.com/cMZJGjn/Screenshot-2025-11-27-184724.png" })
+                    .then(() => {
+                       
+                        const userInfo = {
+                            name: name,
+                            email: email,
+                            photoURL: "https://i.ibb.co.com/cMZJGjn/Screenshot-2025-11-27-184724.png",
+                            password: password,
+                        }
+                        console.log(userInfo);
+                        axiosPublic.post("/users", userInfo)
+                            .then((res) => {
+                                navigate("/")
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
+            })
+            .catch(err => {
+                if (err.message.slice(16, 50) === "(auth/email-already-in-use).") {
+                    setError("This email is already used")
+                }
+                if (err.message.slice(16, 50) === "(auth/invalid-email).") {
+                    setError("Please enter a valid email")
+                }
+                console.log(err);
+            })
+
+    }
     return (
-         <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content w-11/12 flex-col lg:flex-row">
                 <div className="text-center hidden lg:block  lg:text-left">
 
@@ -40,10 +86,10 @@ const Singup = () => {
                                 {errors.password?.type === 'minLength' && <p role="alert" className='text-red-600'>Password must be 6 characters!</p>}
 
                                 <div><a className="link link-hover">Forgot password?</a></div>
-                               
-                                {/* <p className='text-red-500 mt-1'>{error}</p> */}
+
+                                <p className='text-red-500 mt-1'>{error}</p>
                                 <button className="btn bg-teal-600 hover:bg-teal-700 text-white rounded-full mt-4"><MdOutlineLogin className='text-xl' />Sign up</button>
-                                <p className='text-center my-2'>Already have an Account ? please <Link to={'/signup'} className='text-blue-600 '>Login</Link></p>
+                                <p className='text-center my-2'>Already have an Account ? please <Link to={'/login'} className='text-blue-600 '>Login</Link></p>
                                 <div><GoogleLogin></GoogleLogin></div>
                             </fieldset>
                         </form>
