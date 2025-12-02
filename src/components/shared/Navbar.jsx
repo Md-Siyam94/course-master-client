@@ -48,7 +48,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div> 
-                <a className="btn btn-ghost text-2xl font-semibold">SIK<span className='text-teal-500'>HOO</span></a>
+                <a className="btn btn-ghost text-2xl font-semibold">SHIK<span className='text-teal-500'>HOO</span></a>
             </div>
 
             <div className="navbar-end gap-6">

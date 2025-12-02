@@ -1,18 +1,34 @@
 import { useForm } from "react-hook-form";
 import { MdOutlineLogin } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import GoogleLogin from "../../components/shared/GoogleLogin";
+import { useContext, useState } from "react";
+import { AuthContex } from "../../provider/AuthProvider";
 
 
 const Login = () => {
+    const navigate = useNavigate()
+    const [error, setError] = useState("")
+    const { loginUser} = useContext(AuthContex)
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const onSubmit = async (data) => {
+        setError("")
+        const email = data?.email;
+        const password = data?.password;
 
-
-     const { register, handleSubmit, reset, formState: { errors } } = useForm();
-       const onSubmit = async(data)=>{
-        console.log(data);
-       }
+         loginUser(email, password)
+            .then(() => {
+                navigate("/")
+            })
+            .catch(err => {
+                if (err?.message.slice(16, 50) === "(auth/invalid-credential).") {
+                    setError("Email or password is incorrect")
+                }
+              
+            })
+    }
     return (
-       <div className="hero bg-base-200 min-h-screen">
+        <div className="hero bg-base-200 min-h-screen">
             <div className="hero-content w-11/12 flex-col lg:flex-row">
                 <div className="text-center hidden lg:block lg:text-left">
 
@@ -28,14 +44,14 @@ const Login = () => {
                             <fieldset className="fieldset">
                                 {/* email */}
                                 <label className="label">Email</label>
-                                <input type="email" {...register("email", {required: true})} className="input" placeholder="Email" />
+                                <input type="email" {...register("email", { required: true })} className="input" placeholder="Email" />
                                 {errors.email && <span className=' text-red-500'>This field is required</span>}
                                 {/* password */}
                                 <label className="label">Password</label>
-                                <input type="password"  {...register("password", {required: true})} className="input" placeholder="Password" />
+                                <input type="password"  {...register("password", { required: true })} className="input" placeholder="Password" />
                                 {errors.password && <span className=' text-red-500'>This field is required</span>}
                                 <div><a className="link link-hover ">Forgot password?</a></div>
-                                {/* <p className=' text-red-500'>{error}</p> */}
+                                <p className=' text-red-500'>{error}</p>
                                 <button className="btn bg-teal-600 hover:bg-teal-700 text-white rounded-full mt-4"><MdOutlineLogin className='text-xl' />Login</button>
                                 <p className='text-center my-2'>Have not any Account ? please <Link to={'/signup'} className='text-blue-600 '>Sign Up</Link></p>
                                 <div><GoogleLogin></GoogleLogin></div>
