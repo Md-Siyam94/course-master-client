@@ -23,6 +23,7 @@
     "react-hook-form": "^7.67.0",
     "react-icons": "^5.5.0",
     "react-router-dom": "^7.9.6",
+    "react-typed": "^2.0.12",
     "sort-by": "^1.2.0",
     "tailwindcss": "^4.1.17"
   },

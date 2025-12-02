@@ -6,7 +6,7 @@ const Footer = () => {
   <aside>
     <h1 className='text-2xl font-semibold'>SHIK<span className='text-teal-500'>HOO</span></h1>
     <p>
-      ACME Industries Ltd.
+      SHIKHOO TECH LTD.
       <br />
       Providing reliable tech since 1992
     </p>
