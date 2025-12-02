@@ -5,11 +5,11 @@ import Footer from '../components/shared/Footer';
 
 const MainLayout = () => {
     return (
-        <div className='min-h-[calc(100vh-130px)]'>
-            <header className='max-h-screen-2xl'>
+        <div className='max-w-screen-2xl mx-auto'>
+            <header className='max-w-screen-2xl mx-auto'>
                 <Navbar></Navbar>
             </header>
-            <main className='min-h-[calc(100vh-100px)]'>
+            <main className='min-h-[calc(100vh-301px)]'>
                 <Outlet></Outlet>
             </main>
             <footer>
