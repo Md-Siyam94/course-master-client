@@ -11,6 +11,10 @@ import AboutUs from "../pages/About me/AboutUs";
 import Blog from "../pages/Blog/Blog";
 import Dashboard from "../layout/Dashboard";
 import CourseDetails from "../pages/Course Details/CourseDetails";
+import Profile from "../pages/Dashboard/Shared pages/Profile";
+import MyClasses from "../pages/Dashboard/student pages/MyClasses";
+import CourseManagement from "../pages/Dashboard/Admin pages/CourseManagement";
+import PrivetRoute from "../provider/PrivetRoute";
 
 const router = createBrowserRouter([
   {
@@ -51,12 +55,22 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard></Dashboard>,
+    element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
     // errorElement: <div>error</div>,
     children: [
         {
-            path: "/dashboard/profile"
-        }
+            path: "/dashboard/profile",
+            element: <PrivetRoute><Profile></Profile></PrivetRoute>
+        },
+        {
+            path: "/dashboard/my-classes",
+            element: <PrivetRoute><MyClasses></MyClasses></PrivetRoute>
+        },
+        {
+            path: "/dashboard/course-management",
+            element: <PrivetRoute><CourseManagement></CourseManagement></PrivetRoute>
+        },
+
     ]
   }
 ]);

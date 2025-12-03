@@ -11,6 +11,8 @@ const useCourses = () => {
             return res.data
         }
     })
+    console.log(courses);
+    
     return [courses, refetch]
 };
 

@@ -3,7 +3,7 @@ import { FaRegCircleUser, FaRegUser } from 'react-icons/fa6';
 import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
-
+import { IoBookOutline } from "react-icons/io5";
 const Navbar = () => {
     const {user, logout} = useContext(AuthContex)
     const links = <>
@@ -59,7 +59,7 @@ const Navbar = () => {
                 </div>
                 <div>
                     {
-                        user ? <div> <div className="dropdown dropdown-end  dropdown-hover z-50">
+                        user ? <div> <div className="dropdown dropdown-end   z-50">
                             <div tabIndex={0} role="button" className=""> <img
                                 className="h-10 w-10  rounded-full object-cover"
                                 referrerPolicy="no-referrer"
@@ -67,7 +67,9 @@ const Navbar = () => {
                                 alt="user photo" /></div>
                             <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-52 p-2 shadow">
                                 <li><Link>{user?.displayName}</Link></li>
-                                <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' /> My Account</NavLink></li>
+                                {/* todo: make role base routing */}
+                                <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
+                                <li><NavLink to={"/dashboard/my-classes"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />My classes</NavLink></li>
 
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li>
                             </ul>

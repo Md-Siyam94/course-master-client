@@ -2,18 +2,28 @@ import React from 'react';
 import { Link, NavLink, Outlet } from 'react-router-dom';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
+import { GoHome } from "react-icons/go";
+import { FaRegUser } from 'react-icons/fa6';
+import { FiLogOut } from 'react-icons/fi';
+import { MdOutlineManageHistory } from "react-icons/md";
+
 
 const Dashboard = () => {
     const isAdmin = true
+
+
+    const handleLogOut=()=>{
+        console.log("log out");
+    }
 
     return (
         <div className='max-w-screen-2xl mx-auto'>
             <header>
                 <Navbar></Navbar>
             </header>
-            <div className='grid lg:grid-cols-12 lg:px-20 lg:gap-4 min-h-[calc(100vh-220px)]'>
-                <div className='col-span-3 border py-20'>
-                    <ul className='font-semibold menu bg-base-100 py-6 rounded-xl shadow  z-[1] w-full gap-4 p-2'>
+            <div className='grid lg:grid-cols-12 grid-cols-1 lg:px-20 lg:gap-4 bg-base-200 min-h-[calc(100vh-220px)]'>
+                <div className='lg:col-span-3 hidden lg:block  py-20'>
+                    <ul className='font-semibold menu bg-base-100 py-6 rounded-xl shadow   w-full gap-4 p-2'>
                         {
                             isAdmin ? <div><li><NavLink to={"/"} className={({ isActive }) =>
                                 isActive ? "text-green-500 " : " hover:text-green-500 "
@@ -21,9 +31,9 @@ const Dashboard = () => {
                                 <li>  <NavLink className={({ isActive }) =>
                                     isActive ? "text-green-500 " : " hover:text-green-500 "
                                 } to={"/dashboard/profile"} ><FaRegUser className='text-lg' />Profile</NavLink></li>                           
-                                <li><NavLink to={"/dashboard/add-product"} className={({ isActive }) =>
+                                <li><NavLink to={"/dashboard/course-management"} className={({ isActive }) =>
                                     isActive ? "text-green-500 " : " hover:text-green-500 "
-                                }><MdOutlineAddBusiness className='text-xl' />Course Management</NavLink></li>
+                                }><MdOutlineManageHistory className='text-xl' />Course Management</NavLink></li>
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li></div> :
 
                                 <div>
@@ -33,19 +43,17 @@ const Dashboard = () => {
                                     <li>  <NavLink className={({ isActive }) =>
                                         isActive ? "text-green-500 " : " hover:text-green-500 "
                                     } to={"/dashboard/profile"} ><FaRegUser className='text-lg' />Profile</NavLink></li>
-                                     <li><NavLink to={"/dashboard/my-orders"} className={({ isActive }) =>
+                                     <li><NavLink to={"/dashboard/my-classes"} className={({ isActive }) =>
                                     isActive ? "text-green-500 " : " hover:text-green-500 "
                                 }><RiShoppingCartLine className='text-xl' /> My classes</NavLink></li>
-                                    <li><NavLink to={"/dashboard/wishlist"} className={({ isActive }) =>
-                                        isActive ? "text-green-500 " : " hover:text-green-500 "
-                                    }><GoHeart className='text-xl' /> Wish List</NavLink></li>
+                                
                                     <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li>
                                 </div>
 
                         }
                     </ul>
                 </div>
-                <div className='col-span-9 border py-20'>
+                <div className='col-span-9 bg-base-200 py-20'>
                     <Outlet></Outlet>
                 </div>
             </div>
