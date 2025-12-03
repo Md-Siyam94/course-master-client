@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../custom hooks/useAxiosSecure';
+import Swal from 'sweetalert2';
 
 
 
@@ -12,6 +13,17 @@ const AddCourse = () => {
     const [uploading, setUploading] = useState(false)
     const [modules, setModules] = useState([])
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
+
+
+    const handleModulesSubmit=(e)=>{
+         e.preventDefault();
+
+          const form = e.target
+        const videoTitle = form.videoTitle.value
+        const  videoUrl = form.videoUrl.value
+
+        setModules(...modules, {videoTitle, videoUrl})
+    }
 
     const onSubmit = async (data) => {
         setUploading(true)
@@ -32,27 +44,27 @@ const AddCourse = () => {
                 description: data?.description,
                 batch: data?.batch,
                 syllabus: data.syllabus ? data.syllabus.split(",") : [],
-                // modules: 
+                modules: modules, 
             }
             console.log(courseInfo);
-             axiosSecure.post('/courses', courseInfo)
-                .then(res => {
-                    console.log(res.data);
-                    if (res?.data?.success) {
-                        setUploading(false)
-                        reset()
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "Product has been uploaded",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                    }
-                })
-                .catch(err => {
-                    console.log('error from add product', err);
-                })
+            //  axiosSecure.post('/courses', courseInfo)
+            //     .then(res => {
+            //         console.log(res.data);
+            //         if (res?.data?.success) {
+            //             setUploading(false)
+            //             reset()
+            //             Swal.fire({
+            //                 position: "top-end",
+            //                 icon: "success",
+            //                 title: "Product has been uploaded",
+            //                 showConfirmButton: false,
+            //                 timer: 1500
+            //             });
+            //         }
+            //     })
+            //     .catch(err => {
+            //         console.log('error from add product', err);
+            //     })
 
         }
     }
@@ -145,19 +157,28 @@ const AddCourse = () => {
                     </div>
                 </fieldset>
             </form>
-            <form onSubmit={handleSubmit(onSubmit)} className=" bg-base-100 rounded-xl p-10 col-span-5">
-                <fieldset className="fieldset">
+            <form onSubmit={handleModulesSubmit} className=" bg-base-100 rounded-xl p-10 col-span-5">
+                {/* video title */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Video title</span>
+                        </label><br />
+                        <input type="text" name="videoTitle" placeholder="Video title" className="input input-bordered w-full" />
+                        
+                    </div>
+                {/* video url */}
+                    <div className="form-control">
+                        <label className="label">
+                            <span className="label-text">Youtube embadded video url</span>
+                        </label><br />
+                        <input type="url" name="videoUrl" placeholder="Youtube video url" className="input input-bordered w-full" />
+                        
+                    </div>
 
-                    {/* <label className="form-control w-full max-w-xs">
-                        <div className="label">
-                            <span className="label-text">Add image</span>
-                        </div>
-                        <input multiple type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full max-w-xs" />
-                        <div>
-                            {errors.image?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>Please select an Image for package</p>}
-                        </div>
-                    </label> */}
-                </fieldset>
+                    <div className="form-control mt-6">
+                        <button className="btn   bg-teal-600 hover:bg-teal-700 text-white">Add modules</button>
+                    </div>
+                
             </form>
         </div>
     );
