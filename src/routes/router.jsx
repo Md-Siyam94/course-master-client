@@ -15,6 +15,7 @@ import Profile from "../pages/Dashboard/Shared pages/Profile";
 import MyClasses from "../pages/Dashboard/student pages/MyClasses";
 import CourseManagement from "../pages/Dashboard/Admin pages/CourseManagement";
 import PrivetRoute from "../provider/PrivetRoute";
+import AddCourse from "../pages/Dashboard/Admin pages/AddCourse";
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,10 @@ const router = createBrowserRouter([
         {
             path: "/dashboard/course-management",
             element: <PrivetRoute><CourseManagement></CourseManagement></PrivetRoute>
+        },
+        {
+            path: "/dashboard/add-course",
+            element: <PrivetRoute><AddCourse></AddCourse></PrivetRoute>
         },
 
     ]
