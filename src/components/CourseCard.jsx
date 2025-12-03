@@ -7,9 +7,10 @@ const CourseCard = ({ course }) => {
         <div className="card bg-base-100  shadow-sm">
             <figure className="px-10 pt-10">
                 <img
+                    
                     src={thumbnail}
                     alt="thumbnail"
-                    className="rounded-xl" />
+                    className="rounded-xl h-[145px] w-[260px]" />
             </figure>
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{title}</h2>

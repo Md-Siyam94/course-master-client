@@ -1,16 +1,29 @@
-# React + Vite
+# Project : Shikhoo – A Modern Online Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shikhoo is a full-featured online learning platform designed to make digital education simple, accessible, and user-friendly. It allows instructors to create courses with structured modules, and students can explore, enroll, and learn seamlessly through an intuitive interface.
+Built with modern web technologies, Shikhoo focuses on clean user experience, powerful backend functionality, and smooth course delivery.
 
-Currently, two official plugins are available:
+- Live Link: ()
+- Back-end Github: ()
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# ✨ Key Features
+## Tech Stack
 
-## React Compiler
+- React js
+- Node.js, Express.js
+- MongoDB Atlas, Mongoose
+- REST API Architecture
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Dynamic Video Learning
 
-## Expanding the ESLint configuration
+- Each course contains video lessons
+- YouTube embed URLs stored in the database
+- Video displayed dynamically on the frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Student Dashboard
+
+- View enrolled courses
+
+- Track learning progress
+
+- Continue lessons from where they left off

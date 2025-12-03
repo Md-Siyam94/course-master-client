@@ -3,6 +3,7 @@ import { useLoaderData } from 'react-router-dom';
 
 const CourseDetails = () => {
     const course = useLoaderData()
+    
     const {title, description, price, instructor, thumbnail, syllabus, modules} = course || {}
     return (
         <div className='py-32 h-[calc(100vh-90px)] lg:w-11/12 lg:px-20 shadow mx-auto grid lg:grid-cols-5 grid-cols-1 gap-6'>
