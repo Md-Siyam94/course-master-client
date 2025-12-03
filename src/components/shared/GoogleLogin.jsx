@@ -1,17 +1,32 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
+import useAxiosPublic from '../../custom hooks/useAxiosPublic';
 
 const GoogleLogin = () => {
     const { signUpWithGoogle } = useContext(AuthContex);
     const navigate = useNavigate()
+    const axiosPublic = useAxiosPublic()
 
-    
+
     const handleGoogleLogin = () => {
         signUpWithGoogle()
-            .then(() => {
-                // console.log(res.data);
+            .then(res => {
                 navigate('/')
+                const user = res?.user
+                const userInfo = {
+                    name: user?.displayName,
+                    email: user?.email,
+                    photoURL: user?.photoURL,
+                    password: "dfjn4545"
+                }
+                axiosPublic.post("/users", userInfo)
+                    .then((res) => {
+                       
+                    })
+                    .catch(err => {
+                        console.log(err);
+                    })
             })
             .catch(err => {
                 console.log(err.message);

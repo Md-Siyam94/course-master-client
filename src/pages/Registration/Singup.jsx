@@ -25,19 +25,16 @@ const Singup = () => {
                 // update user profile
                 updateUserProfile({ displayName: name, photoURL: "https://i.ibb.co.com/cMZJGjn/Screenshot-2025-11-27-184724.png" })
                     .then(() => {
-
+                        navigate('/')
                         const userInfo = {
                             name: name,
                             email: email,
                             photoURL: "https://i.ibb.co.com/cMZJGjn/Screenshot-2025-11-27-184724.png",
                             password: password,
                         }
-                        console.log(userInfo);
                         axiosPublic.post("/users", userInfo)
                             .then((res) => {
-                                if (res.data?.success) {
-                                    navigate('/')
-                                }
+
                             })
                             .catch(err => {
                                 console.log(err);

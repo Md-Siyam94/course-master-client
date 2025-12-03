@@ -3,10 +3,9 @@
 Shikhoo is a full-featured online learning platform designed to make digital education simple, accessible, and user-friendly. It allows instructors to create courses with structured modules, and students can explore, enroll, and learn seamlessly through an intuitive interface.
 Built with modern web technologies, Shikhoo focuses on clean user experience, powerful backend functionality, and smooth course delivery.
 
-- Live Link: ()
-- Back-end Github: ()
+- Live Link: (https://shikhoo.netlify.app/)
+- Back-end Github: (https://github.com/Md-Siyam94/shikhoo-server)
 
-# ✨ Key Features
 ## Tech Stack
 
 - React js
@@ -14,6 +13,7 @@ Built with modern web technologies, Shikhoo focuses on clean user experience, po
 - MongoDB Atlas, Mongoose
 - REST API Architecture
 
+# ✨ Key Features
 ## Dynamic Video Learning
 
 - Each course contains video lessons
