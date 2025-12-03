@@ -1,16 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import useCourses from '../../custom hooks/useCourses';
 import { ReactTyped } from 'react-typed';
 import CourseCard from '../../components/CourseCard';
+import axios from 'axios';
+import useAxiosPublic from '../../custom hooks/useAxiosPublic';
 
 const OurCourses = () => {
     const [search, setSearch] = useState("")
-    const [courses, refetch] = useCourses([])
-    console.log(courses);
+    const axiosPublic = useAxiosPublic()
+    const [courses, setCourses] = useState([])
+console.log(search);
+    useEffect(()=>{
+        axiosPublic.get(`/courses/search?q=${search}`)
+        .then(res=>{
+            setCourses(res.data)
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    },[axiosPublic, search])
     return (
         <div className='py-24 lg:w-11/12 lg:px-20 mx-auto '>
             <div className='lg:flex justify-evenly'>
-                <label className="flex flex-row-reverse max-w-lg py-2 border rounded-full items-center px-5 border-green-500">
+                <label className="flex flex-row-reverse lg:w-lg py-2 border rounded-full items-center px-5 border-green-500">
                     <svg className="h-[1em] opacity-50 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <g
                             strokeLinejoin="round"

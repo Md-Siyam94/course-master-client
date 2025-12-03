@@ -10,6 +10,7 @@ import OurCourses from "../pages/All Courses/OurCourses";
 import AboutUs from "../pages/About me/AboutUs";
 import Blog from "../pages/Blog/Blog";
 import Dashboard from "../layout/Dashboard";
+import CourseDetails from "../pages/Course Details/CourseDetails";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,11 @@ const router = createBrowserRouter([
         {
             path: '/our-courses',
             element: <OurCourses></OurCourses>
+        },
+        {
+            path: '/course-details/:id',
+            element: <CourseDetails></CourseDetails>,
+            loader: ({params})=> fetch(`${import.meta.env.VITE_baseAPI}/courses/${params.id}`)
         },
         {
             path: '/blog',
