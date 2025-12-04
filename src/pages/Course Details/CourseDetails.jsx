@@ -1,14 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useLoaderData, useParams } from 'react-router-dom';
+import React, { useContext, useEffect, useState } from 'react';
+import { Navigate, useLoaderData, useParams } from 'react-router-dom';
 
 import useUser from '../../custom hooks/useUser';
 import Swal from 'sweetalert2';
 import useAxiosPublic from '../../custom hooks/useAxiosPublic';
+import useAxiosSecure from '../../custom hooks/useAxiosSecure';
+import { AuthContex } from '../../provider/AuthProvider';
 
 const CourseDetails = () => {
     const [userInfo] = useUser()
     const [loading, setLoading] = useState(false)
+    const {user} = useContext(AuthContex)
     const axiosPublic = useAxiosPublic()
+    const axiosSecure = useAxiosSecure()
     const [course, setCourse] = useState({})
     const params = useParams()
     useEffect(() => {
@@ -72,7 +76,7 @@ const CourseDetails = () => {
     }
 
     return (
-        <div className='py-32 h-[calc(100vh-90px)] lg:w-11/12 lg:px-20 shadow mx-auto grid lg:grid-cols-5 grid-cols-1 gap-6'>
+        <div className='py-32 h-[calc(100vh-90px)] lg:w-11/12 lg:px-20 shadow mx-auto grid lg:grid-cols-5 grid-cols-1 gap-6 px-6'>
             <div className='col-span-2 ' >
                 <img className='h-72  object-fill' src={thumbnail} alt="" />
             </div>
@@ -106,7 +110,9 @@ const CourseDetails = () => {
                         <label className="label">Email</label>
                         <input type="text" disabled defaultValue={userInfo?.email} className="input w-full" placeholder="Name" />
 
-                        <button type='submit' className=' py-2 px-6 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>Enroll Now</button>
+                        {
+                            user ? <button type='submit' className=' py-2 px-6 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>Enroll Now</button> : <Navigate to={"/login"} className=' py-2 px-6 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>Enroll Now</Navigate>
+                        }
                     </form>
 
                 </div>

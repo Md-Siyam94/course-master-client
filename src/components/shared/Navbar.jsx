@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaRegCircleUser, FaRegUser } from 'react-icons/fa6';
+import { FaRegAddressBook, FaRegCircleUser, FaRegUser } from 'react-icons/fa6';
 import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
@@ -70,7 +70,9 @@ const Navbar = () => {
                                 {/* todo: make role base routing */}
                                 {
                                     isAdmin ? <ul><li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
-                                        <li><NavLink to={"/dashboard/course-management"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />Course Management</NavLink></li></ul> : <ul>
+                                        <li><NavLink to={"/dashboard/course-management"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />Course Management</NavLink></li>
+                                        <li><NavLink to={"/dashboard/enrollment-management"} className='hover:text-green-500  '><FaRegAddressBook className='text-lg' />Enrollment Management</NavLink></li>
+                                        </ul> : <ul>
                                         <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
                                         <li><NavLink to={"/dashboard/my-classes"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />My classes</NavLink></li>
                                     </ul>

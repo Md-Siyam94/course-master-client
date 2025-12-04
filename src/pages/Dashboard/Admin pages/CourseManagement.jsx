@@ -5,7 +5,7 @@ import CourseCard from '../../../components/CourseCard';
 import { Link } from 'react-router-dom';
 
 const CourseManagement = () => {
-    const [courses] = useCourses([])
+    const [courses, refetch] = useCourses([])
     return (
         <div>
             <div className='w-full mx-auto flex justify-end'>
@@ -13,7 +13,7 @@ const CourseManagement = () => {
             </div>
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 justify-evenly '>
                 {
-                    courses.map(course=> <CourseCard key={course?._id} course={course}></CourseCard>)
+                    courses.map(course=> <CourseCard key={course?._id} refetch={refetch} course={course}></CourseCard>)
                 }
             </div>
         </div>

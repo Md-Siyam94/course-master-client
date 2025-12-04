@@ -3,7 +3,7 @@ import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
 import { GoHome } from "react-icons/go";
-import { FaRegUser } from 'react-icons/fa6';
+import { FaRegAddressBook, FaRegUser } from 'react-icons/fa6';
 import { FiLogOut } from 'react-icons/fi';
 import { MdOutlineManageHistory } from "react-icons/md";
 import useIsAdmin from '../custom hooks/useIsAdmin';
@@ -45,6 +45,9 @@ const Dashboard = () => {
                                 <li><NavLink to={"/dashboard/course-management"} className={({ isActive }) =>
                                     isActive ? "text-green-500 " : " hover:text-green-500 "
                                 }><MdOutlineManageHistory className='text-xl' />Course Management</NavLink></li>
+                                <li><NavLink to={"/dashboard/enrollment-management"} className={({ isActive }) =>
+                                    isActive ? "text-green-500 " : " hover:text-green-500 "
+                                }><FaRegAddressBook className='text-xl' />Enrollment Management</NavLink></li>
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li></div> :
 
                                 <div>

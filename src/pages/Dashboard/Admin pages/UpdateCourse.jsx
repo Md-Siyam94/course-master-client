@@ -1,21 +1,32 @@
-import React, { useState } from 'react';
+
+import  { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import useAxiosSecure from '../../../custom hooks/useAxiosSecure';
+
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../../custom hooks/useAxiosSecure';
+import { useParams } from 'react-router-dom';
+import useAxiosPublic from '../../../custom hooks/useAxiosPublic';
 
 
-
-
-const img_hosting_key = import.meta.env.VITE_img_hosting_key;
-const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
-const AddCourse = () => {
-    const axiosSecure = useAxiosSecure()
-    const [error, setError] = useState("")
-    const [uploading, setUploading] = useState(false)
-    const [modules, setModules] = useState([])
+const UpdateCourse = () => {
+    const params = useParams()
+     const axiosSecure = useAxiosSecure();
+     const axiosPublic = useAxiosPublic();
+     const [course, setCourse] = useState({})
+    const [error, setError] = useState("");
+    const [uploading, setUploading] = useState(false);
+    const [modules, setModules] = useState([]);
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
+    // get course data
+    useEffect(() => {
+            axiosPublic.get(`/courses/${params?.id}`)
+                .then(res => {
+                    setCourse(res.data)
+                })
+        }, [axiosPublic,])
 
+    // submit modules
     const handleModulesSubmit = (e) => {
         e.preventDefault();
 
@@ -24,22 +35,18 @@ const AddCourse = () => {
         const videoUrl = form.videoUrl.value
 
         setModules([...modules, { videoTitle, videoUrl }])
+        
         form.reset()
     }
 
+    // submit form data
     const onSubmit = async (data) => {
         setError("")
         setUploading(true)
-        const imageFile = { image: data?.image[0] }
-        const res = await axiosSecure.post(img_hosting_api, imageFile, {
-            headers: {
-                'content-type': 'multipart/form-data'
-            }
-        });
-        if (res?.data?.success) {
+     
             const courseInfo = {
                 title: data?.title,
-                thumbnail: res?.data?.data?.display_url,
+                thumbnail: course?.thumbnail,
                 instructor: data?.instructor,
                 price: data?.price,
                 description: data?.description,
@@ -47,12 +54,13 @@ const AddCourse = () => {
                 syllabus: data.syllabus ? data.syllabus.split(",") : [],
                 modules: modules,
             }
+            console.log(courseInfo);
             if (modules.length === 0) {
                 setUploading(false)
-                setError("Please add atleast 1 module")
+                setError("Please increase atleast 1 module")
                 return;
             }
-            axiosSecure.post('/courses', courseInfo)
+            axiosSecure.patch(`/courses/update/${params?.id}`, courseInfo)
                 .then(res => {
                     console.log(res.data);
                     if (res?.data?.success) {
@@ -62,33 +70,30 @@ const AddCourse = () => {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
-                            title: "Product has been uploaded",
+                            title: "Course has been updated",
                             showConfirmButton: false,
                             timer: 1500
                         });
                     }
                 })
-                .catch(err => {
-                    console.log('error from add product', err);
-                })
+                
 
-        }
+       
     }
-
     return (
-        <div className=" grid lg:grid-cols-12  gap-8">
+         <div className=" grid grid-cols-12 gap-8">
             <form onSubmit={handleSubmit(onSubmit)} className=" rounded-xl p-10 col-span-7 bg-base-100 ">
                 <fieldset className="fieldset">
+                    {/* <label className="label">Email</label>
+          <input type="email" className="input" placeholder="Email" /> */}
 
                     {/* Course name */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Course Name</span>
                         </label><br />
-                        <input type="text" {...register("title", { required: true })} placeholder="Course title" className="input input-bordered w-full" />
-                        <div>
-                            {errors.title?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <input type="text" {...register("title", { required: true })} defaultValue={course?.title} placeholder="Course title" className="input input-bordered w-full" />
+                       
                     </div>
 
                     {/* instructor */}
@@ -96,73 +101,54 @@ const AddCourse = () => {
                         <label className="label">
                             <span className="label-text">Instructor name</span>
                         </label><br />
-                        <input type="text" {...register("instructor", { required: true })} placeholder="Instructor name" className="input input-bordered w-full" />
-                        <div>
-                            {errors.instructor?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <input type="text" defaultValue={course?.instructor} {...register("instructor", { required: true })} placeholder="Instructor name" className="input input-bordered w-full" />
+                       
                     </div>
                     {/* batch */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Batch no</span>
                         </label><br />
-                        <input type="number" {...register("batch", { required: true })} placeholder="Batch" className="input input-bordered w-full" />
-                        <div>
-                            {errors.batch?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <input type="number" defaultValue={course?.batch} {...register("batch", { required: true })} placeholder="Batch" className="input input-bordered w-full" />
+                        
                     </div>
                     {/* price */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Course price</span>
                         </label><br />
-                        <input type="text" {...register("price", { required: true })} placeholder="Price" className="input input-bordered w-full" />
-                        <div>
-                            {errors.price?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <input type="text" defaultValue={course?.price} {...register("price", { required: true })} placeholder="Price" className="input input-bordered w-full" />
+                      
                     </div>
                     {/* syllabus */}
                     <div className="form-control">
                         <label className="label">
                             <span className="label-text">Course syllabus</span>
                         </label><br />
-                        <input type="text" {...register("syllabus", { required: true })} placeholder="Write syllabus " className="input input-bordered w-full" />
-                        <div>
-                            {errors.syllabus?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <input type="text" defaultValue={course?.syllabus?.join(",")} {...register("syllabus", { required: true })} placeholder="Write syllabus " className="input input-bordered w-full" />
+                       
                     </div>
-                    {/* image */}
-                    <label className="form-control w-full max-w-xs">
-                        <div className="label">
-                            <span className="label-text">Thumbnail</span>
-                        </div>
-                        <input multiple type="file" {...register("image", { required: true })} className="file-input file-input-bordered w-full max-w-xs" />
-                        <div>
-                            {errors.image?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>Please select an Image for course</p>}
-                        </div>
-                    </label>
+                    
                     {/* description */}
                     <label className="form-control my-2">
                         <div className="label">
                             <span className="label-text">Description</span>
                         </div><br />
-                        <textarea {...register("description", { required: true })} className="textarea textarea-bordered h-24 w-full" placeholder="Write about Course" ></textarea>
-                        <div>
-                            {errors.description?.type === 'required' && <p role="alert" className='text-red-600 mt-2'>This field is required !</p>}
-                        </div>
+                        <textarea defaultValue={course?.description} {...register("description", { required: true })} className="textarea textarea-bordered h-24 w-full" placeholder="Write about Course" ></textarea>
+                        
                     </label>
                     <p className=' text-red-500'>{error}</p>
 
                     <div>
                         <button className="btn bg-teal-600 hover:bg-teal-700 py-2 rounded-full text-white mt-8">
                             {
-                                uploading ? "Uploading..." : "Uploade Course"
+                                uploading ? "Updating..." : "Update Course"
                             }
                         </button>
                     </div>
                 </fieldset>
             </form>
-            <form onSubmit={handleModulesSubmit} className=" bg-base-100 rounded-xl p-10 col-span-5 w-full">
+            <form onSubmit={handleModulesSubmit} className=" bg-base-100 rounded-xl p-10 col-span-5">
                 {/* video title */}
                 <div className="form-control my-2">
                     <label className="label">
@@ -185,7 +171,7 @@ const AddCourse = () => {
                 </div>
 
                 <div>
-                    <p className='font-semibold text-lg mt-6'>Total module: {modules.length}</p>
+                    <p className='font-semibold text-lg mt-6'>Total modules: {course?.modules?.length + modules.length}</p>
                 </div>
 
             </form>
@@ -193,4 +179,4 @@ const AddCourse = () => {
     );
 };
 
-export default AddCourse;
+export default UpdateCourse;

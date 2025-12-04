@@ -16,6 +16,8 @@ import CourseManagement from "../pages/Dashboard/Admin pages/CourseManagement";
 import PrivetRoute from "../provider/PrivetRoute";
 import AddCourse from "../pages/Dashboard/Admin pages/AddCourse";
 import WatchModules from "../layout/WatchModules";
+import UpdateCourse from "../pages/Dashboard/Admin pages/UpdateCourse";
+import Enrollment from "../pages/Dashboard/Admin pages/Enrollment";
 
 const router = createBrowserRouter([
     {
@@ -62,14 +64,21 @@ const router = createBrowserRouter([
                 path: "/dashboard/my-classes",
                 element: <PrivetRoute><MyClasses></MyClasses></PrivetRoute>
             },
-
             {
                 path: "/dashboard/course-management",
                 element: <PrivetRoute><CourseManagement></CourseManagement></PrivetRoute>
             },
             {
+                path: "/dashboard/enrollment-management",
+                element: <PrivetRoute><Enrollment></Enrollment></PrivetRoute>
+            },
+            {
                 path: "/dashboard/add-course",
                 element: <PrivetRoute><AddCourse></AddCourse></PrivetRoute>
+            },
+            {
+                path: "/dashboard/update-course/:id",
+                element: <PrivetRoute><UpdateCourse></UpdateCourse></PrivetRoute>
             },
 
         ]

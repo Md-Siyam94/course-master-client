@@ -1,6 +1,7 @@
 import React from 'react';
 import Hero from './Hero';
 import Support from './Support';
+import Graphic from './Graphic';
 
 const Home = () => {
     return (
@@ -10,6 +11,9 @@ const Home = () => {
             </section>
             <section>
                 <Support></Support>
+            </section>
+            <section>
+                <Graphic></Graphic>
             </section>
         </div>
     );

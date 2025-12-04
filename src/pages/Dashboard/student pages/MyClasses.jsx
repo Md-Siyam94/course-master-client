@@ -12,7 +12,7 @@ const MyClasses = () => {
     console.log(enrolleds);
 
     return (
-        <div>
+        <div className='px-6'>
             <h1 className='lg:text-2xl text-xl font-semibold'>Welcome back <span className='text-teal-500'>{user?.name}</span>, ready for your next lesson?</h1>
             <div className='lg:px-10 px-6'>
                 {

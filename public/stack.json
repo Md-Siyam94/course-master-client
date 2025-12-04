@@ -2,66 +2,66 @@
   {
     "_id": "1",
     "name": "HTML",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg"
+    "stackURL": "https://i.ibb.co.com/TqmKTVfV/1051277.png"
   },
   {
     "_id": "2",
     "name": "CSS",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg"
+    "stackURL": "https://i.ibb.co.com/MzZb9Ty/16020753.png"
   },
   {
     "_id": "3",
     "name": "Tailwind CSS",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg"
+    "stackURL": "https://i.ibb.co.com/fVygSCF5/download.png"
   },
   {
     "_id": "4",
     "name": "JavaScript",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg"
+    "stackURL": "https://i.ibb.co.com/350zbpY5/5968292.png"
   },
   {
     "_id": "5",
     "name": "TypeScript",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+    "stackURL": "https://i.ibb.co.com/QsyLVRB/5968381.png"
   },
   {
     "_id": "6",
     "name": "React",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+    "stackURL": "https://i.ibb.co.com/kgdsBgyD/15772797.png"
   },
   {
     "_id": "7",
     "name": "Next.js",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+    "stackURL": "https://i.ibb.co.com/4Z4CynZL/download.jpg"
   },
   {
     "_id": "8",
     "name": "Node.js",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+    "stackURL": "https://i.ibb.co.com/S7Q7Fr6c/5968322.png"
   },
   {
     "_id": "9",
     "name": "Express.js",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg"
+    "stackURL": "https://i.ibb.co.com/RpvcYtQz/download.png"
   },
   {
     "_id": "10",
-    "name": "MongoDB / Mongoose",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+    "name": "MongoDB ",
+    "stackURL": "https://i.ibb.co.com/0VMJCtnC/download.png"
   },
   {
     "_id": "11",
     "name": "Firebase",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+    "stackURL": "https://i.ibb.co.com/hRwQpgVM/download.png"
   },
   {
     "_id": "12",
     "name": "Git",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg"
+    "stackURL": "https://i.ibb.co.com/1fcz4gyy/15466163.png"
   },
   {
     "_id": "13",
     "name": "GitHub",
-    "stackURL": "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg"
+    "stackURL": "https://i.ibb.co.com/R4MkCJ73/4926624.png"
   }
 ]
