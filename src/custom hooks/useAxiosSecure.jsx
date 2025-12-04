@@ -1,7 +1,5 @@
 import axios from 'axios';
-import { config } from 'localforage';
 import React, { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { AuthContex } from '../provider/AuthProvider';
 
 const axiosSecure = axios.create({
@@ -9,7 +7,7 @@ const axiosSecure = axios.create({
 })
 
 const useAxiosSecure = () => {
-    const navigate = useNavigate()
+    
     const { logout } = useContext(AuthContex)
     // set token in the headers
     axiosSecure.interceptors.request.use(function (config) {
@@ -23,12 +21,15 @@ const useAxiosSecure = () => {
 
     axiosSecure.interceptors.response.use(function (response) {
         return response
-    }, async (error) => {
+    },  (error) => {
         const status = error.response.status;
         // for 401 and 403 user log out
         if (status === 401 || status === 403) {
-            await logout()
-            navigate("/")
+             logout()
+             .then()
+             .catch(err=>{
+                console.log(err);
+             })
         }
 
         return Promise.reject(error)

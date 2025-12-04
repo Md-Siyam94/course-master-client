@@ -4,20 +4,20 @@ import { FiLogOut } from 'react-icons/fi';
 import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
 import { IoBookOutline } from "react-icons/io5";
+import useIsAdmin from '../../custom hooks/useIsAdmin';
 const Navbar = () => {
-    const {user, logout} = useContext(AuthContex)
+    const { user, logout } = useContext(AuthContex)
+    const [isAdmin] = useIsAdmin()
+    // const isAdmin = true
     const links = <>
         <li><NavLink to={"/"}
             className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
-        }
+                isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+            }
         >Home</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/our-courses'}>Our courses</NavLink></li>
-        <li><NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
-        } to={'/blog'}>Blog</NavLink></li>
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/about-us'}>About us</NavLink></li>
@@ -28,12 +28,12 @@ const Navbar = () => {
     // logout user
     const handleLogOut = () => {
         logout()
-        .then(()=>{
-            
-        })
-        .catch(err=>{
-            console.log(err);
-        })
+            .then(() => {
+
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
     return (
         <div className="navbar fixed top-0 z-50 py-4 lg:px-20 bg-white/70 shadow-sm">
@@ -47,7 +47,7 @@ const Navbar = () => {
                         className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
                         {links}
                     </ul>
-                </div> 
+                </div>
                 <a className="btn btn-ghost text-2xl font-semibold">SHIK<span className='text-teal-500'>HOO</span></a>
             </div>
 
@@ -68,8 +68,14 @@ const Navbar = () => {
                             <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-52 p-2 shadow">
                                 <li><Link>{user?.displayName}</Link></li>
                                 {/* todo: make role base routing */}
-                                <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
-                                <li><NavLink to={"/dashboard/my-classes"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />My classes</NavLink></li>
+                                {
+                                    isAdmin ? <ul><li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
+                                        <li><NavLink to={"/dashboard/course-management"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />Course Management</NavLink></li></ul> : <ul>
+                                        <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
+                                        <li><NavLink to={"/dashboard/my-classes"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />My classes</NavLink></li>
+                                    </ul>
+                                }
+
 
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li>
                             </ul>

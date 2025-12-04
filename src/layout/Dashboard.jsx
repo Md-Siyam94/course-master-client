@@ -1,19 +1,30 @@
-import React from 'react';
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, NavLink, Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../components/shared/Navbar';
 import Footer from '../components/shared/Footer';
 import { GoHome } from "react-icons/go";
 import { FaRegUser } from 'react-icons/fa6';
 import { FiLogOut } from 'react-icons/fi';
 import { MdOutlineManageHistory } from "react-icons/md";
+import useIsAdmin from '../custom hooks/useIsAdmin';
+import { IoBookOutline } from 'react-icons/io5';
+import { AuthContex } from '../provider/AuthProvider';
 
 
 const Dashboard = () => {
-    const isAdmin = true
+    const [isAdmin] = useIsAdmin()
+    const {logout} = useContext(AuthContex)
+    const navigate = useNavigate()
 
 
     const handleLogOut=()=>{
-        console.log("log out");
+        logout()
+        .then(()=>{
+            navigate('/')
+        })
+        .catch(err=>{
+            console.log(err);
+        })
     }
 
     return (
@@ -37,15 +48,15 @@ const Dashboard = () => {
                                 <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li></div> :
 
                                 <div>
-                                    <li><Link to={"/dashboard/profile"}>
-                                        <img className='h-12 w-12 rounded-full object-cover' src={user?.photoURL} alt="user photo" />
-                                        {user?.displayName}</Link></li>
+                                    <li><NavLink to={"/"} className={({ isActive }) =>
+                                isActive ? "text-green-500 " : " hover:text-green-500 "
+                            }><GoHome className='text-xl' /> Home</NavLink></li>
                                     <li>  <NavLink className={({ isActive }) =>
                                         isActive ? "text-green-500 " : " hover:text-green-500 "
                                     } to={"/dashboard/profile"} ><FaRegUser className='text-lg' />Profile</NavLink></li>
                                      <li><NavLink to={"/dashboard/my-classes"} className={({ isActive }) =>
                                     isActive ? "text-green-500 " : " hover:text-green-500 "
-                                }><RiShoppingCartLine className='text-xl' /> My classes</NavLink></li>
+                                }><IoBookOutline className='text-xl' /> My classes</NavLink></li>
                                 
                                     <li><button onClick={handleLogOut}><FiLogOut className='text-xl' /> Log out</button></li>
                                 </div>

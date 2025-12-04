@@ -8,7 +8,6 @@ import Login from "../pages/Registration/Login";
 import Singup from "../pages/Registration/Singup";
 import OurCourses from "../pages/All Courses/OurCourses";
 import AboutUs from "../pages/About me/AboutUs";
-import Blog from "../pages/Blog/Blog";
 import Dashboard from "../layout/Dashboard";
 import CourseDetails from "../pages/Course Details/CourseDetails";
 import Profile from "../pages/Dashboard/Shared pages/Profile";
@@ -34,11 +33,6 @@ const router = createBrowserRouter([
         {
             path: '/course-details/:id',
             element: <CourseDetails></CourseDetails>,
-            loader: ({params})=> fetch(`${import.meta.env.VITE_baseAPI}/courses/${params.id}`)
-        },
-        {
-            path: '/blog',
-            element: <Blog></Blog>
         },
         {
             path: '/about-us',

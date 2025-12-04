@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     const handleGoogleLogin = () => {
         signUpWithGoogle()
             .then(res => {
-                navigate('/')
+
                 const user = res?.user
                 const userInfo = {
                     name: user?.displayName,
@@ -22,11 +22,12 @@ const GoogleLogin = () => {
                 }
                 axiosPublic.post("/users", userInfo)
                     .then((res) => {
-                       
+
                     })
                     .catch(err => {
                         console.log(err);
                     })
+                navigate('/')
             })
             .catch(err => {
                 console.log(err.message);

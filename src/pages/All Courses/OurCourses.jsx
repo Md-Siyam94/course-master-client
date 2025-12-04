@@ -3,22 +3,23 @@ import useCourses from '../../custom hooks/useCourses';
 import { ReactTyped } from 'react-typed';
 import CourseCard from '../../components/CourseCard';
 import axios from 'axios';
-import useAxiosPublic from '../../custom hooks/useAxiosPublic';
+import useAxiosSecure from '../../custom hooks/useAxiosSecure';
 
 const OurCourses = () => {
     const [search, setSearch] = useState("")
-    const axiosPublic = useAxiosPublic()
+    const [sort, setSort] = useState(false)
+    const axiosSecure = useAxiosSecure()
     const [courses, setCourses] = useState([])
-console.log(search);
-    useEffect(()=>{
-        axiosPublic.get(`/courses/search?q=${search}`)
-        .then(res=>{
-            setCourses(res.data)
-        })
-        .catch(err=>{
-            console.log(err);
-        })
-    },[axiosPublic, search])
+    console.log(search);
+    useEffect(() => {
+        axiosSecure.get(`/courses/search?q=${search}&sort=${sort}`)
+            .then(res => {
+                setCourses(res.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }, [axiosSecure, search])
     return (
         <div className='py-24 lg:w-11/12 lg:px-20 mx-auto '>
             <div className='lg:flex justify-evenly'>
@@ -71,17 +72,19 @@ console.log(search);
 
                 </label>
                 <div className='hidden lg:block'>
-                    <button className='py-2 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>Sort by price</button>
+                    <button onClick={() => setSort(sort === "asc" ? "desc" : "asc")} className='py-2 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>{
+                        sort? "Sorted by Price": "Sort by price"
+                    }</button>
                 </div>
             </div>
             {/* map courses */}
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 justify-evenly '>
                 {
-                    courses.map(course=> <CourseCard key={course?._id} course={course}></CourseCard>)
+                    courses.map(course => <CourseCard key={course?._id} course={course}></CourseCard>)
                 }
             </div>
 
-        </div>
+        </div >
     );
 };
 
