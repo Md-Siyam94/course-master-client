@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { useLoaderData, useParams } from 'react-router-dom';
-import useAxiosSecure from '../../custom hooks/useAxiosSecure';
+
 import useUser from '../../custom hooks/useUser';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../custom hooks/useAxiosPublic';
 
 const CourseDetails = () => {
     const [userInfo] = useUser()
     const [loading, setLoading] = useState(false)
-    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
     const [course, setCourse] = useState({})
     const params = useParams()
     useEffect(() => {
-        axiosSecure.get(`/courses/${params?.id}`)
+        axiosPublic.get(`/courses/${params?.id}`)
             .then(res => {
                 setCourse(res.data)
             })
-    }, [axiosSecure,])
+    }, [axiosPublic,])
     const { title, description, price, instructor, thumbnail, batch, syllabus, modules, _id } = course || {}
 
 

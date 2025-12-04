@@ -1,6 +1,6 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+    createBrowserRouter,
+    RouterProvider,
 } from "react-router-dom";
 import MainLayout from "../layout/MainLayout";
 import Home from "../pages/Home/Home";
@@ -15,63 +15,69 @@ import MyClasses from "../pages/Dashboard/student pages/MyClasses";
 import CourseManagement from "../pages/Dashboard/Admin pages/CourseManagement";
 import PrivetRoute from "../provider/PrivetRoute";
 import AddCourse from "../pages/Dashboard/Admin pages/AddCourse";
+import WatchModules from "../layout/WatchModules";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <MainLayout></MainLayout>,
-    // errorElement: <>error</>,
-    children: [
-        {
-            path: "/",
-            element: <Home></Home>
-        },
-        {
-            path: '/our-courses',
-            element: <OurCourses></OurCourses>
-        },
-        {
-            path: '/course-details/:id',
-            element: <CourseDetails></CourseDetails>,
-        },
-        {
-            path: '/about-us',
-            element: <AboutUs></AboutUs>
-        },
-        {
-            path: '/login',
-            element: <Login></Login>
-        },
-        {
-            path: '/signup',
-            element: <Singup></Singup>
-        },
-    ]
-  },
-  {
-    path: "/dashboard",
-    element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
-    // errorElement: <div>error</div>,
-    children: [
-        {
-            path: "/dashboard/profile",
-            element: <PrivetRoute><Profile></Profile></PrivetRoute>
-        },
-        {
-            path: "/dashboard/my-classes",
-            element: <PrivetRoute><MyClasses></MyClasses></PrivetRoute>
-        },
-        {
-            path: "/dashboard/course-management",
-            element: <PrivetRoute><CourseManagement></CourseManagement></PrivetRoute>
-        },
-        {
-            path: "/dashboard/add-course",
-            element: <PrivetRoute><AddCourse></AddCourse></PrivetRoute>
-        },
+    {
+        path: "/",
+        element: <MainLayout></MainLayout>,
+        // errorElement: <>error</>,
+        children: [
+            {
+                path: "/",
+                element: <Home></Home>
+            },
+            {
+                path: '/our-courses',
+                element: <OurCourses></OurCourses>
+            },
+            {
+                path: '/course-details/:id',
+                element: <CourseDetails></CourseDetails>,
+            },
+            {
+                path: '/about-us',
+                element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
+            },
+            {
+                path: '/signup',
+                element: <Singup></Singup>
+            },
+        ]
+    },
+    {
+        path: "/dashboard",
+        element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
+        // errorElement: <div>error</div>,
+        children: [
+            {
+                path: "/dashboard/profile",
+                element: <PrivetRoute><Profile></Profile></PrivetRoute>
+            },
+            {
+                path: "/dashboard/my-classes",
+                element: <PrivetRoute><MyClasses></MyClasses></PrivetRoute>
+            },
 
-    ]
-  }
+            {
+                path: "/dashboard/course-management",
+                element: <PrivetRoute><CourseManagement></CourseManagement></PrivetRoute>
+            },
+            {
+                path: "/dashboard/add-course",
+                element: <PrivetRoute><AddCourse></AddCourse></PrivetRoute>
+            },
+
+        ]
+    },
+    {
+        path: "/dashboard/my-classes/:id",
+        element: <PrivetRoute><WatchModules></WatchModules></PrivetRoute>
+    },
 ]);
 
 
