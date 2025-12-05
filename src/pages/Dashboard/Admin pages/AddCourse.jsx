@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import useAxiosSecure from '../../../custom hooks/useAxiosSecure';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../../custom hooks/useAxiosPublic';
 
 
 
@@ -10,12 +11,13 @@ const img_hosting_key = import.meta.env.VITE_img_hosting_key;
 const img_hosting_api = `https://api.imgbb.com/1/upload?key=${img_hosting_key}`
 const AddCourse = () => {
     const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
     const [error, setError] = useState("")
     const [uploading, setUploading] = useState(false)
     const [modules, setModules] = useState([])
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
 
-
+    // set modules
     const handleModulesSubmit = (e) => {
         e.preventDefault();
 
@@ -27,11 +29,30 @@ const AddCourse = () => {
         form.reset()
     }
 
+    // set assignment
+    const handleAssignmentSubmit = (e) => {
+        e.preventDefault();
+
+
+        const form = e.target
+        const assignment = form.assignment.value
+        const mark = form.mark.value
+        const existAssignment = modules.find(module=> module.assignment)
+        if(existAssignment){
+            return setError("module alreadey has an assignment ")
+        }
+
+        setModules([...modules, { assignment, mark }])
+        form.reset()
+    }
+
+    // create and post course
     const onSubmit = async (data) => {
         setError("")
         setUploading(true)
         const imageFile = { image: data?.image[0] }
-        const res = await axiosSecure.post(img_hosting_api, imageFile, {
+
+        const res = await axiosPublic.post(img_hosting_api, imageFile, {
             headers: {
                 'content-type': 'multipart/form-data'
             }
@@ -162,33 +183,57 @@ const AddCourse = () => {
                     </div>
                 </fieldset>
             </form>
-            <form onSubmit={handleModulesSubmit} className=" bg-base-100 rounded-xl p-10 col-span-5 w-full">
-                {/* video title */}
-                <div className="form-control my-2">
-                    <label className="label">
-                        <span className="label-text">Video title</span>
-                    </label><br />
-                    <input type="text" name='videoTitle' placeholder="Video title" className="input input-bordered w-full" />
+            <div className='col-span-5 w-full py-10'>
+                {/* modules form */}
+                <form onSubmit={handleModulesSubmit} className=" bg-base-100 rounded-xl px-10 ">
+                    {/* video title */}
+                    <div className="form-control my-2">
+                        <label className="label">
+                            <span className="label-text">Video title</span>
+                        </label><br />
+                        <input type="text" name='videoTitle' placeholder="Video title" className="input input-bordered w-full" />
 
-                </div>
-                {/* video url */}
-                <div className="form-control my-2">
-                    <label className="label">
-                        <span className="label-text">Youtube embadded video url</span>
-                    </label><br />
-                    <input type="url" name="videoUrl" placeholder="Youtube video url" className="input input-bordered w-full" />
+                    </div>
+                    {/* video url */}
+                    <div className="form-control my-2">
+                        <label className="label">
+                            <span className="label-text">Youtube embadded video url</span>
+                        </label><br />
+                        <input type="url" name="videoUrl" placeholder="Youtube video url" className="input input-bordered w-full" />
 
-                </div>
+                    </div>
 
-                <div className="form-control mt-6">
-                    <button className="btn rounded-full  bg-teal-600 hover:bg-teal-700 text-white">Add modules</button>
-                </div>
+                    <div className="form-control mt-6">
+                        <button className="btn rounded-full  bg-teal-600 hover:bg-teal-700 text-white">Add modules</button>
+                    </div>
 
-                <div>
-                    <p className='font-semibold text-lg mt-6'>Total module: {modules.length}</p>
-                </div>
+                    <div>
+                        <p className='font-semibold text-lg mt-6'>Total module: {modules.length}</p>
+                    </div>
 
-            </form>
+                </form>
+                {/* assingment form */}
+                <form onSubmit={handleAssignmentSubmit} className=" bg-base-100 rounded-xl px-10 ">
+                    {/* assignment title */}
+                    <div className="form-control my-2">
+                        <label className="label">
+                            <span className="label-text">Assignment title</span>
+                        </label><br />
+                        <input type="text" name='assignment' placeholder="Assignment title" className="input input-bordered w-full" />
+
+                    </div>
+                    {/* assignment mark */}
+                    <div className="form-control my-2">
+                        <label className="label">
+                            <span className="label-text">Assignment mark</span>
+                        </label><br />
+                        <input type="number" name="mark" placeholder="Assignment mark" className="input input-bordered w-full" />
+                    </div>
+                    <div className="form-control mt-6">
+                        <button className="btn rounded-full  bg-teal-600 hover:bg-teal-700 text-white">Add Assignment</button>
+                    </div>
+                </form>
+            </div>
         </div>
     );
 };
