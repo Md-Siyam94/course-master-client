@@ -3,23 +3,23 @@ import useCourses from '../../custom hooks/useCourses';
 import { ReactTyped } from 'react-typed';
 import CourseCard from '../../components/CourseCard';
 import axios from 'axios';
-import useAxiosSecure from '../../custom hooks/useAxiosSecure';
+import useAxiosPublic from '../../custom hooks/useAxiosPublic';
 
 const OurCourses = () => {
     const [search, setSearch] = useState("")
     const [sort, setSort] = useState(false)
-    const axiosSecure = useAxiosSecure()
+    const axiosPublic = useAxiosPublic()
     const [courses, setCourses] = useState([])
     console.log(search);
     useEffect(() => {
-        axiosSecure.get(`/courses/search?q=${search}&sort=${sort}`)
+        axiosPublic.get(`/courses/search?q=${search}&sort=${sort}`)
             .then(res => {
                 setCourses(res.data)
             })
             .catch(err => {
                 console.log(err);
             })
-    }, [axiosSecure, search])
+    }, [axiosPublic, search])
     return (
         <div className='py-24 lg:w-11/12 lg:px-20 px-6 mx-auto '>
             <div className='lg:flex justify-evenly'>

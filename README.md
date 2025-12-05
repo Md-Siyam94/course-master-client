@@ -6,6 +6,11 @@ Built with modern web technologies, Shikhoo focuses on clean user experience, po
 - Live Link: (https://shikhoo.netlify.app/)
 - Back-end Github: (https://github.com/Md-Siyam94/shikhoo-server)
 
+## admin access
+ 
+ Email: admin@gmail.com
+ pass: admin123
+
 ## .env 
 
 VITE_baseAPI=https://course-master-server-rust.vercel.app
