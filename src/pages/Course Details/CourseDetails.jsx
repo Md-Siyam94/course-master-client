@@ -37,6 +37,7 @@ const CourseDetails = () => {
             description: description,
             batch: batch,
             price: price,
+            modules: modules,
             instructor: instructor,
             thumbnail: thumbnail,
         }

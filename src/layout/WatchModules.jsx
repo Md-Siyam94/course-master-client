@@ -8,24 +8,57 @@ import { useEffect, useState } from "react";
 const WatchModules = () => {
     const axiosPublic = useAxiosPublic()
     const [course, setCourse] = useState({})
-    const [vdoUrl, setVdoUrl] = useState("")
-    const params = useParams()
+    const params = useParams();
+    const [currentVideo, setCurrentVideo] = useState(null);
+    const [currentId, setCurrentId] = useState(null);
+    const [assignment, setAssignment] = useState(false)
+    const [currentModule, setCurrentModule] = useState({})
+    const [modules, setModules] = useState([])
     useEffect(() => {
         axiosPublic.get(`/courses/${params?.id}`)
             .then(res => {
                 setCourse(res.data)
-
                 if (res.data.modules && res.data.modules.length > 0) {
-                    setVdoUrl(res.data.modules[0].videoUrl);
+                    setCurrentVideo(res.data.modules[0].videoUrl);
+                    setCurrentId(res.data.modules[0]._id || null);
+                    setModules(res.data.modules)
+
                 }
             })
-    }, [axiosPublic,])
-    const { title, description, price, instructor, thumbnail, batch, syllabus, modules, _id } = course || {}
+    }, [axiosPublic, params?.id])
 
-    const handleSetUrl = (url) => {
-        setVdoUrl(url)
-    }
 
+    const handleModuleClick = (id) => {
+        // Mark previous module completed
+        axiosPublic.put(`/courses/update/${course?._id}/${id}`)
+            .then(res => {
+                if (res.data?.modifiedCount > 0) {
+                    // 2. Update UI state
+                    setModules(prev =>
+                        prev.map(module =>
+                            module._id === id ? { ...module, isCompleted: true } : module
+                        )
+                    );
+                }
+            })
+            .catch(err => console.error(err));
+
+
+        const clickedModule = modules.find(module => module?._id === id);
+        // currentModule(clickedModule)
+        // if (clickedModule?.assignment) {
+        //     setAssignment(true)
+        // }
+        if (clickedModule?.videoUrl) {
+            setCurrentVideo(clickedModule.videoUrl);
+        }
+        setCurrentId(id);
+    };
+    const completedCount = modules.filter(module => module?.isCompleted)?.length;
+    const totalCount = modules?.length;
+    const progress = totalCount ? (completedCount / totalCount) * 100 : 0;
+
+    console.log(completedCount,progress);
     return (
         <div className='max-w-screen-2xl mx-auto'>
             <header className='max-w-screen-2xl mx-auto'>
@@ -35,21 +68,42 @@ const WatchModules = () => {
                 <div className="grid lg:grid-cols-12 grid-cols-1 py-24 gap-4">
                     {/* ifram */}
                     <div className="col-span-8 lg:max-h-[calc(100vh-220px)] ">
-                        <iframe className="lg:h-[420px] lg:w-[815px] w-full h-96" src={vdoUrl} title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
-                            allowfullscreen>
-                        </iframe>
+                        {currentVideo ? <div>
+                            <iframe className="lg:h-[420px] lg:w-[815px] w-full h-96" src={currentVideo} title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin"
+                                allowfullscreen>
+                            </iframe>
 
-                        <div className="flex justify-end">
-                            <button className="py-2 px-6 cursor-pointer mt-4  font-semibold bg-teal-600 hover:bg-teal-700 text-white">Next</button>
+                            <div className="flex justify-end">
+                                <button className="py-2 px-6 cursor-pointer mt-4  font-semibold bg-teal-600 hover:bg-teal-700 text-white">Next</button>
+                            </div>
+                        </div> : <div className="mt-5 p-4 border rounded-xl bg-gray-100">
+                            <h2 className="font-bold text-xl">📘 Assignment</h2>
+                            <p>{currentModule?.assignment}</p>
+
+                            <textarea
+                                className="w-full border p-2 rounded mt-3"
+                                placeholder="Submit your assignment..."
+                            // value={submission}
+                            // onChange={(e) => setSubmission(e.targetValue)}
+                            ></textarea>
+
+                            <button className="mt-3 bg-blue-600 text-white px-4 py-2 rounded">
+                                Submit Assignment
+                            </button>
                         </div>
+                        }
                     </div>
                     <div className="col-span-4 max-h-[calc(100vh-220px)] w-full overflow-y-scroll p-4">
                         {/* video list */}
                         {
-                            modules?.map((module, index) => <NavLink onClick={() => handleSetUrl(module?.videoUrl)} className="p-5 w-full hover:bg-teal-600 hover:text-white  shadow flex gap-4 my-2" key={index}>
+                            modules?.map((module, index) => <NavLink onClick={() => handleModuleClick(module?._id)} className="p-5 w-full hover:bg-teal-600 hover:text-white items-center shadow flex gap-4 my-2" key={index}>
+                                {module?.isCompleted && <span className="  rounded-full  font-semibold ml-1 text-xl">✔</span>
+                                }
                                 <p className="">{index + 1}</p>
-                                <h1 className="text-lg font-semibold">{module?.videoTitle}</h1>
+                                {module?.assignment ?
+                                    <span>📘 Assignment (Marks: {module?.mark})</span> : <span>{module.videoTitle}</span>
+                                }
                             </NavLink>)
                         }
                     </div>
