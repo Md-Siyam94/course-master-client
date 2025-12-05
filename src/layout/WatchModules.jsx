@@ -95,6 +95,10 @@ const WatchModules = () => {
                         }
                     </div>
                     <div className="col-span-4 max-h-[calc(100vh-220px)] w-full overflow-y-scroll p-4">
+                       <div className="flex gap-2 items-center">
+                         <p className="font-semibold"> {progress} %</p>
+                        <progress className="progress progress-success w-56" value={progress} max="100"></progress>
+                       </div>
                         {/* video list */}
                         {
                             modules?.map((module, index) => <NavLink onClick={() => handleModuleClick(module?._id)} className="p-5 w-full hover:bg-teal-600 hover:text-white items-center shadow flex gap-4 my-2" key={index}>
