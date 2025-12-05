@@ -18,12 +18,13 @@ import AddCourse from "../pages/Dashboard/Admin pages/AddCourse";
 import WatchModules from "../layout/WatchModules";
 import UpdateCourse from "../pages/Dashboard/Admin pages/UpdateCourse";
 import Enrollment from "../pages/Dashboard/Admin pages/Enrollment";
+import Error from "../components/Error";
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <MainLayout></MainLayout>,
-        // errorElement: <>error</>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/",
@@ -54,7 +55,7 @@ const router = createBrowserRouter([
     {
         path: "/dashboard",
         element: <PrivetRoute><Dashboard></Dashboard></PrivetRoute>,
-        // errorElement: <div>error</div>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: "/dashboard/profile",

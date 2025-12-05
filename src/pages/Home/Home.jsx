@@ -2,6 +2,7 @@ import React from 'react';
 import Hero from './Hero';
 import Support from './Support';
 import Graphic from './Graphic';
+import WhyChooseUs from './WhyChooseUs';
 
 const Home = () => {
     return (
@@ -14,6 +15,9 @@ const Home = () => {
             </section>
             <section>
                 <Graphic></Graphic>
+            </section>
+            <section>
+                <WhyChooseUs></WhyChooseUs>
             </section>
         </div>
     );
