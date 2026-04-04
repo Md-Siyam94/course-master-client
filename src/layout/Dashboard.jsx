@@ -32,7 +32,7 @@ const Dashboard = () => {
             <header>
                 <Navbar></Navbar>
             </header>
-            <div className='grid lg:grid-cols-12 grid-cols-1 lg:px-20 lg:gap-4 bg-base-200 min-h-[calc(100vh-220px)]'>
+            <div className='grid lg:grid-cols-12 grid-cols-1 lg:px-20 mt-5 lg:gap-4 bg-base-200 min-h-[calc(100vh-220px)]'>
                 <div className='lg:col-span-3 hidden lg:block  py-20'>
                     <ul className='font-semibold menu bg-base-100 py-6 rounded-xl shadow   w-full gap-4 p-2'>
                         {
@@ -67,7 +67,7 @@ const Dashboard = () => {
                         }
                     </ul>
                 </div>
-                <div className='col-span-9 bg-base-200 py-20'>
+                <div className='col-span-9  bg-base-200 py-20'>
                     <Outlet></Outlet>
                 </div>
             </div>

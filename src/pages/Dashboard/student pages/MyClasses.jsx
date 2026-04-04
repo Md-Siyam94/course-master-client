@@ -17,7 +17,8 @@ const MyClasses = () => {
             <div className='lg:px-10 px-6'>
                 {
                     enrolleds?.length === 0 ? <div>
-                        <h1 className='text-2xl font-semibold text-center mt-96'>Have not Enrolled any course!</h1>
+                        <h1 className='text-2xl font-semibold text-center mt-32'>Have not Enrolled any course!</h1>
+                        <Link></Link>
                     </div> : <div className='grid grid-cols-1 '>
                         {
                             enrolleds?.map((enrolled, index) => <div className='py-20 border-b-2  border-gray-300' key={index}>

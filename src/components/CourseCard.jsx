@@ -50,7 +50,7 @@ const CourseCard = ({ course, refetch }) => {
                     alt="thumbnail"
                     className="rounded-xl h-[145px] w-[260px]" />
             </figure>
-            <div className="card-body items-center text-center">
+            <div className="card-body items-center ">
                 <h2 className="card-title">{title}</h2>
                 <p className='opacity-60'>{description}</p>
                 <div className='flex  gap-6'>

@@ -21,7 +21,7 @@ const OurCourses = () => {
             })
     }, [axiosPublic, search])
     return (
-        <div className='py-24 lg:w-11/12 lg:px-20 px-6 mx-auto '>
+        <div className='py-24 max-w-7xl lg:px-20 px-6 mx-auto '>
             <div className='lg:flex justify-evenly'>
                 <label className="flex flex-row-reverse lg:w-lg w-sm mx-auto lg:mx-0 py-2 border rounded-full items-center px-5 border-green-500">
                     <svg className="h-[1em] opacity-50 text-green-500" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
