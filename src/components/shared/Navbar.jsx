@@ -15,9 +15,14 @@ const Navbar = () => {
                 isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
             }
         >Home</NavLink></li>
-        <li><NavLink className={({ isActive }) =>
+        <li>{
+            !user && <NavLink className={({ isActive }) =>
             isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
-        } to={'/our-courses'}>Our courses</NavLink></li>
+        } to={'/our-courses'}>Courses</NavLink>}</li>
+        <li>{
+            user && <NavLink className={({ isActive }) =>
+            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+        } to={"/dashboard/my-classes"}>My Classes</NavLink>}</li>
         <li><NavLink className={({ isActive }) =>
             isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/about-us'}>About us</NavLink></li>
@@ -53,7 +58,7 @@ const Navbar = () => {
 
             <div className="navbar-end gap-6 items-center">
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu  menu-horizontal px-1">
+                    <ul className="menu  menu-horizontal ">
                         {links}
                     </ul>
                 </div>
