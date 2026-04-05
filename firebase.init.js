@@ -1,4 +1,4 @@
-// Import the functions you need from the SDKs you need
+ // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -6,12 +6,12 @@ import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_apiKey,
-  authDomain: import.meta.env.VITE_authDomain,
-  projectId: import.meta.env.VITE_projectId,
-  storageBucket: import.meta.env.VITE_storageBucket,
-  messagingSenderId: import.meta.env.VITE_messagingSenderId,
-  appId: import.meta.env.VITE_appId,
+  apiKey: "AIzaSyCR15DBGwWmXss16M95frKgErEOTURzYfc",
+  authDomain: "course-master-41375.firebaseapp.com",
+  projectId: "course-master-41375",
+  storageBucket: "course-master-41375.firebasestorage.app",
+  messagingSenderId: "60989887442",
+  appId: "1:60989887442:web:66a5936051349779dcae0b"
 };
 
 // Initialize Firebase

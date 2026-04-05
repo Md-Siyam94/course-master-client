@@ -11,17 +11,7 @@ Built with modern web technologies, Shikhoo focuses on clean user experience, po
  Email: admin@gmail.com
  pass: admin123
 
-## .env 
 
-VITE_baseAPI=https://course-master-server-rust.vercel.app
-VITE_img_hosting_key=7b4b6581d908822756a41f934d306274
-
-VITE_apiKey=AIzaSyCR15DBGwWmXss16M95frKgErEOTURzYfc
-VITE_authDomain=course-master-41375.firebaseapp.com
-VITE_projectId=course-master-41375
-VITE_storageBucket=course-master-41375.firebasestorage.app
-VITE_messagingSenderId=60989887442
-VITE_appId=1:60989887442:web:66a5936051349779dcae0b
 
 ## Tech Stack
 
