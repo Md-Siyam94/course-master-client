@@ -1,4 +1,4 @@
-import { FaRegStar } from "react-icons/fa";
+import { FaCheckCircle, FaRegStar } from "react-icons/fa";
 import { FiClock, FiUsers } from "react-icons/fi";
 import { Zap, Check } from 'lucide-react';
 import ChooseUsBg from '../../assets/choose-us-bg.png'
@@ -6,20 +6,7 @@ import { BsFillLightningChargeFill } from "react-icons/bs";
 
 
 const WhyChooseUs = () => {
-    const features = [
-        {
-            title: '155,000 Video Courses',
-            description: 'Sed ut perspiciatis unde omnis iste natus sit voluptatemec lifes accusantium',
-        },
-        {
-            title: 'Top Industry Instructors',
-            description: 'Sed ut perspiciatis unde omnis iste natus sit voluptatemec lifes accusantium',
-        },
-        {
-            title: 'Lifetime Full Access',
-            description: 'Sed ut perspiciatis unde omnis iste natus sit voluptatemec lifes accusantium',
-        },
-    ];
+
     return (
         // <div className="lg:px-20 px-6 lg:py-24 py-16 max-w-7xl mx-auto text-center">
         //     <h1 className="lg:text-7xl md:text-5xl text-3xl font-semibold">Why <span className="text-teal-500">Shi</span>khoo?</h1>
@@ -53,53 +40,93 @@ const WhyChooseUs = () => {
         <div style={{
             backgroundImage: `url(${ChooseUsBg})`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
-            height: "full",
+            backgroundRepeat: "no-repeat",
+
             width: "100%"
-        }} className="relative py-20 px-4  overflow-hidden">
+        }} className="relative py-20 px-4 h-screen overflow-hidden">
             <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-200 rounded-full opacity-20 -translate-x-1/2 -translate-y-1/2 blur-3xl"></div>
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-200 rounded-full opacity-20 -translate-x-1/3 translate-y-1/3 blur-3xl"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="flex flex-col items-center mb-16">
-                    <div className="inline-flex items-center gap-2 px-6 py-2 bg-white rounded-full shadow-sm mb-6 border border-cyan-100">
-                        <Zap className="w-5 h-5 text-cyan-500 fill-cyan-500" />
-                        <span className="text-gray-700 font-medium">Reason to Choose</span>
+                <div className="flex flex-col items-center mb-32">
+                    <div className="flex flex-col items-center text-center ">
+                        <div className="inline-flex items-center gap-3 p-1  rounded-full mb-6 border  border-gray-300">
+                            <BsFillLightningChargeFill size={30} className="text-teal-600 text-4xl p-2 rounded-full bg-[#daf2f0]" />
+                            <span className=" font-medium pr-4">Reason to Choose</span>
+                        </div>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900">Why Choose Us!</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold ">Why Choose Us!</h2>
                 </div>
-                <div className="flex flex-col items-center text-center mb-16">
-                    <div className="inline-flex items-center gap-3 p-1  rounded-full mb-6 border  border-gray-300">
-                        <BsFillLightningChargeFill size={30} className="text-teal-600 text-4xl p-2 rounded-full bg-[#daf2f0]" />
-                        <span className=" font-medium pr-4">Reason to Choose</span>
-                    </div>
-                </div>
+
 
                 <div className="relative">
-                    <div className="hidden md:block h-1 -top-12 absolute  left-0 right-0 bg-gradient-to-r from-transparent via-teal-600 to-transparent mx-auto" style={{ width: '100%' }}></div>
+                    <div className="hidden lg:block h-1 -top-12 absolute  left-0 right-0 bg-gradient-to-r from-transparent via-teal-600 to-transparent mx-auto" style={{ width: '100%' }}></div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
-                        {features.map((feature, index) => (
-                            <div key={index} className="relative">
-                                <div className="hidden md:flex absolute -top-12 left-1/2 -translate-x-1/2 flex-col items-center">
-                                    <div className="w-4 h-4 bg-cyan-500 rounded-full border-4 border-white shadow-lg"></div>
-                                    <div className="w-0.5 h-24 bg-cyan-400"></div>
-                                    <div className="w-2 h-2 bg-cyan-400 rounded-full"></div>
-                                </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
+                        {/* Feature 1 */}
+                        <div className="relative  lg:pt-16">
+                            <div className="hidden lg:flex absolute p-0 -top-14 left-1/2 -translate-x-1/2 flex-col items-center">
+                                <div className="w-5 h-5 bg-white rounded-full border-5 border-teal-600 shadow-lg"></div>
+                                <div className="hidden md:block w-1  top-6    left-0 right-0 bg-gradient-to-t from-transparent to-teal-600 mx-auto" style={{ height: '100px' }}></div>
+                                {/* <div className="w-1 h-24 bg-teal-600"></div> */}
+                                <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
+                            </div>
 
-                                <div className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
-                                    <div className="flex items-start gap-4">
-                                        <div className="flex-shrink-0 w-8 h-8 bg-cyan-500 rounded-lg flex items-center justify-center">
-                                            <Check className="w-5 h-5 text-white" strokeWidth={3} />
-                                        </div>
-                                        <div>
-                                            <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                                            <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                                        </div>
+                            <div className="bg-white rounded-xl p-8 hover:bg-teal-600 hover:text-white shadow-lg hover:shadow-xl transition-shadow duration-300 ">
+                                <div className="flex items-start gap-4">
+                                    <div className="flex-shrink-0 w-6 h-6 bg-teal-600 hover:bg-white rounded-full flex items-center justify-center">
+                                        <FaCheckCircle className="w-5 h-5 text-white hover:text-teal-600" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold  mb-3">155,000 Video Courses</h3>
+                                        <p className=" leading-relaxed">Sed ut perspiciatis unde omnis iste natus sit voluptatemec lifes accusantium</p>
                                     </div>
                                 </div>
                             </div>
-                        ))}
+                        </div>
+                        {/* Feature 2 */}
+                        <div className="relative  lg:pt-36">
+                            <div className="hidden lg:flex absolute -top-14 left-1/2 -translate-x-1/2 flex-col items-center">
+                                <div className="w-5 h-5 bg-white rounded-full border-5 border-teal-600 shadow-lg"></div>
+                                <div className="hidden md:block w-1  top-6    left-0 right-0 bg-gradient-to-t from-transparent to-teal-600 mx-auto" style={{ height: '180px' }}></div>
+                                {/* <div className="w-1 h-24 bg-teal-600"></div> */}
+                                <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
+                            </div>
+
+                            <div className="bg-white rounded-xl p-8 hover:bg-teal-600 hover:text-white  shadow-lg hover:shadow-xl transition-shadow duration-300">
+                                <div className="flex items-start gap-4">
+                                    <div className="flex-shrink-0 w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center">
+                                        <FaCheckCircle className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold  mb-3">Top Industry Instructors</h3>
+                                        <p className=" leading-relaxed">Learn from experts in their fields with real-world experience and knowledge.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {/* Feature 3 */}
+                        <div className="relative md:col-span-2 md:w-1/2 lg:w-full  mx-auto lg:col-span-1 lg:pt-16">
+                            <div className="hidden lg:flex absolute -top-14 left-1/2 -translate-x-1/2 flex-col items-center">
+                                <div className="w-5 h-5 bg-white rounded-full border-5 border-teal-600 shadow-lg"></div>
+                                <div className="hidden md:block w-1  top-6    left-0 right-0 bg-gradient-to-t from-transparent to-teal-600 mx-auto" style={{ height: '100px' }}></div>
+                                {/* <div className="w-1 h-24 bg-teal-600"></div> */}
+                                <div className="w-2 h-2 bg-teal-600 rounded-full"></div>
+                            </div>
+
+                            <div className="bg-white rounded-xl p-8 hover:bg-teal-600 hover:text-white  shadow-lg hover:shadow-xl transition-shadow duration-300 ">
+                                <div className="flex items-start gap-4">
+                                    <div className="flex-shrink-0 w-6 h-6 bg-teal-600 rounded-full flex items-center justify-center">
+                                        <FaCheckCircle className="w-5 h-5 text-white" />
+                                    </div>
+                                    <div>
+                                        <h3 className="text-xl font-bold  mb-3">Lifetime Full Access</h3>
+                                        <p className=" leading-relaxed">Sed ut perspiciatis unde omnis iste natus sit voluptatemec lifes accusantium</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>

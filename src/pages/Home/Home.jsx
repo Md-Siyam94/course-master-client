@@ -18,10 +18,10 @@ const Home = () => {
                 <Support></Support>
             </section>
             <section>
-                <Graphic></Graphic>
+                <WhyChooseUs></WhyChooseUs>
             </section>
             <section>
-                <WhyChooseUs></WhyChooseUs>
+                <Graphic></Graphic>
             </section>
         </div>
     );
