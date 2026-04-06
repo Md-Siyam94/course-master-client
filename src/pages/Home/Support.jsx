@@ -32,7 +32,7 @@ const Support = () => {
         //     </div>
 
         // </div>
-        <div className="bg-[#143532]  overflow-hidden py-28 px-5">
+        <div className="bg-[#143532]  overflow-hidden py-28 px-4">
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
                 {features.map((feature, index) => (
                     <div className="bg-[#264542] bg-opacity-50 backdrop-blur-sm rounded-lg p-4 border border-[#314E4C] border-opacity-30 hover:bg-opacity-70 transition-all duration-300">
