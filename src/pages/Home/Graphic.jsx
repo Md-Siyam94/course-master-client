@@ -19,9 +19,9 @@ const Graphic = () => {
                             <span className="text-gray-700 font-medium pr-4">Let's Join With Us</span>
                         </div>
                     </div>
-                    <h1 className="lg:text-5xl text-3xl  font-semibold ">Become an <span className="text-teal-600">Instructor</span> and
+                    <h1 className="lg:text-5xl text-3xl  font-semibold ">Become an <span className="text-teal-600">Instructor</span> and <br />
                         Join With Us </h1>
-                    <p className="font-semibold my-5 md:w-9/12 lg:w-full opacity-65">This includes offering personalized feedback fostering a sense of community through discussion forums and group projects, and providing continuous support
+                    <p className="font-semibold my-5 md:w-9/12 lg:w-full opacity-65">This includes offering personalized feedback fostering a sense of community <br /> through discussion forums and group projects, and providing continuous support <br />
                         to address challenges and improve.</p>
                 </div>
             </div>

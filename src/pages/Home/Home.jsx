@@ -5,6 +5,7 @@ import Graphic from './Graphic';
 import WhyChooseUs from './WhyChooseUs';
 import TopCourses from './TopCourses';
 import RecommendedCourses from './RecommendedCourses';
+import WatchClasses from './WatchClasses';
 
 const Home = () => {
     return (
@@ -17,6 +18,9 @@ const Home = () => {
             </section>
             <section>
                 <Support></Support>
+            </section>
+            <section>
+                <WatchClasses></WatchClasses>
             </section>
             <section>
                 <RecommendedCourses/>

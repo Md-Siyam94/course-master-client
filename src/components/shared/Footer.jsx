@@ -38,9 +38,9 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4">
         <div className="border border-slate-600 rounded-2xl p-8 md:p-12 mb-16 ">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
-            <div className="max-w-md">
-              <h3 className="text-3xl md:text-4xl font-bold mb-2">Subscribe Our Newsletter For</h3>
-              <h3 className="text-3xl md:text-4xl font-bold">Latest Updates</h3>
+            <div className="max-w-md py-8">
+              <h3 className="text-3xl md:text-3xl font-bold mb-2">Subscribe Our Newsletter For</h3>
+              <h3 className="text-3xl md:text-3xl font-bold">Latest Updates</h3>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
@@ -65,7 +65,7 @@ const Footer = () => {
               Fusce varius, dolor tempor interdum tristique bibendum.
             </p>
             <div className="space-y-3 mb-6">
-              <a href="tel:(702) 123-1478" className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors">
+              <a href="tel:(702) 123-1478" className="flex items-center gap-3 text-2xl font-semibold text-white hover:text-cyan-400 transition-colors">
                 <Phone className="w-5 h-5 flex-shrink-0" />
                 <span>(702) 123-1478</span>
               </a>
@@ -102,7 +102,7 @@ const Footer = () => {
                     href={link.href}
                     className="flex items-center gap-3 text-gray-400 hover:text-cyan-400 transition-colors group"
                   >
-                    <ArrowRight className="w-4 h-4 flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <ArrowRight className="w-4 h-4 flex-shrink-0 opacity-0 text-gray-400 group-hover:opacity-100 transition-opacity" />
                     <span>{link.label}</span>
                   </a>
                 </li>
