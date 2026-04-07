@@ -3,6 +3,7 @@ import { FiClock, FiUsers } from "react-icons/fi";
 import { Zap, Check } from 'lucide-react';
 import ChooseUsBg from '../../assets/choose-us-bg.png'
 import { BsFillLightningChargeFill } from "react-icons/bs";
+import SectionHeading from "../../components/shared/SectionHeading";
 
 
 const WhyChooseUs = () => {
@@ -48,20 +49,11 @@ const WhyChooseUs = () => {
             <div className="absolute bottom-0 left-0 w-80 h-80 bg-cyan-200 rounded-full opacity-20 -translate-x-1/3 translate-y-1/3 blur-3xl"></div>
 
             <div className="max-w-7xl mx-auto relative z-10">
-                <div className="flex flex-col items-center mb-32">
-                    <div className="flex flex-col items-center text-center ">
-                        <div className="inline-flex items-center gap-3 p-1  rounded-full mb-6 border  border-gray-300">
-                            <BsFillLightningChargeFill size={30} className="text-teal-600 text-4xl p-2 rounded-full bg-[#daf2f0]" />
-                            <span className=" font-medium pr-4">Reason to Choose</span>
-                        </div>
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-bold ">Why Choose Us!</h2>
-                </div>
-
-
-                <div className="relative">
+                {/* Section Heading */}
+                <SectionHeading title="Why Choose Us!" heading="Reason to Choose" style={"text-center"}></SectionHeading>
+                {/* body */}
+                <div className="relative mt-32">
                     <div className="hidden lg:block h-1 -top-12 absolute  left-0 right-0 bg-gradient-to-r from-transparent via-teal-600 to-transparent mx-auto" style={{ width: '100%' }}></div>
-
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                         {/* Feature 1 */}
                         <div className="relative  lg:pt-16">

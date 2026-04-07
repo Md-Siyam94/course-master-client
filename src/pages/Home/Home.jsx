@@ -4,6 +4,7 @@ import Support from './Support';
 import Graphic from './Graphic';
 import WhyChooseUs from './WhyChooseUs';
 import TopCourses from './TopCourses';
+import RecommendedCourses from './RecommendedCourses';
 
 const Home = () => {
     return (
@@ -16,6 +17,9 @@ const Home = () => {
             </section>
             <section>
                 <Support></Support>
+            </section>
+            <section>
+                <RecommendedCourses/>
             </section>
             <section>
                 <WhyChooseUs></WhyChooseUs>
