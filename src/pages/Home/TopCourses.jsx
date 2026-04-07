@@ -1,6 +1,7 @@
 import React from 'react'
 import { BsFillLightningChargeFill } from 'react-icons/bs'
 import { Settings, Code, TrendingUp, Building2, Dumbbell, Pencil, Zap } from 'lucide-react';
+import SectionHeading from '../../components/shared/SectionHeading';
 export default function TopCourses() {
     const categories = [
         { icon: <Settings size={32} strokeWidth={1.5} />, title: 'Technology', courseCount: 15 },
@@ -21,18 +22,8 @@ export default function TopCourses() {
         // </div>
         <div className="max-w-7xl mx-auto bg-white flex items-center justify-center py-20 px-4">
             <div className="max-w-7xl w-full">
-                <div className="flex flex-col items-center text-center mb-16">
-                    <div className="inline-flex items-center gap-3 p-1  rounded-full mb-6 border border-gray-100">
-                        <BsFillLightningChargeFill size={30} className="text-teal-600 text-4xl p-2 rounded-full bg-[#daf2f0]" />
-                        <span className="text-gray-700 font-medium pr-4">Top Course Category</span>
-                    </div>
-
-                    <h1 className="text-2xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Explore 40000+ Free New
-                        <br />
-                        Online Courses
-                    </h1>
-                </div>
+                <SectionHeading title="Explore 40000+ Free New Online Courses" heading="Top Course Category" style="items-start text-center" ></SectionHeading>
+                
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
                     {categories.map((category, index) => (
