@@ -22,9 +22,9 @@ const WhyChooseUs = () => {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Heading */}
-                <SectionHeading title="Why Choose Us!" heading="Reason to Choose" style={"text-center"}></SectionHeading>
+                <SectionHeading title="Why Choose Us!" heading="Reason to Choose" style={"text-center "}></SectionHeading>
                 {/* body */}
-                <div className="relative mt-32">
+                <div className="relative lg:mt-32">
                     <div className="hidden lg:block h-1 -top-12 absolute  left-0 right-0 bg-gradient-to-r from-transparent via-teal-600 to-transparent mx-auto" style={{ width: '100%' }}></div>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
                         {/* Feature 1 */}
