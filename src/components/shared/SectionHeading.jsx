@@ -11,7 +11,7 @@ export default function SectionHeading({ title, heading, style }) {
                 </div>
 
             </div>
-            <h1 className={`lg:text-5xl ${style?.includes('text-start w-1/2 text-white') ? 'text-start w-1/2 text-white' : 'text-center w-full'} text-3xl font-semibold`}>{title}</h1>
+            <h1 className={`lg:text-5xl ${style } text-3xl mx-auto ${style?.includes('text-start') ? 'text-start' : 'text-center'} font-semibold`}>{title}</h1>
         </div>
     )
 }

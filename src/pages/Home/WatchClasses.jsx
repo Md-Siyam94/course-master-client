@@ -4,7 +4,7 @@ import SectionHeading from "../../components/shared/SectionHeading";
 const WatchClasses = () => {
     return (
         <div className="bg-[#F9F9F9] py-24 px-4">
-            <SectionHeading heading={"Watch Our Classes"} title={"Get Instant Access to The Free Self Development Course"} style={"w-1/2 items-center "} ></SectionHeading>
+            <SectionHeading heading={"Watch Our Classes"} title={"Get Instant Access to The Free Self Development Course"} style={" items-center  w-1/2 "} ></SectionHeading>
             <div className="p-3 rounded-2xl bg-base-100 max-w-7xl mx-auto ">
                 <img className="rounded-2xl" src="https://i.ibb.co/4Z09CmpH/video-img.png" alt="" />
                 <div className="lg:w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 items-center   mt-10 mb-2">
