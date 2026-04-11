@@ -12,19 +12,19 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={"/"}
             className={({ isActive }) =>
-                isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+                isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
             }
         >Home</NavLink></li>
         <li>{
             !user && <NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+            isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/our-courses'}>Courses</NavLink>}</li>
         <li>{
             user && <NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+            isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={"/dashboard/my-classes"}>My Classes</NavLink>}</li>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+            isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/about-us'}>About us</NavLink></li>
 
     </>
