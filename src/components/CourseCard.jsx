@@ -52,7 +52,6 @@ const CourseCard = ({ course, refetch }) => {
             </figure>
             <div className="card-body items-center ">
                 <h2 className="card-title">{title}</h2>
-                <p className='opacity-60'>{description}</p>
                 <div className=' justify-start '>
                     <p className='text-lg font-semibold opacity-55'>Batch {batch}</p>
                     <p className='text-lg opacity-70'>price: {price} Tk</p>
