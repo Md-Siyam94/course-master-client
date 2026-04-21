@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
 import { IoBookOutline } from "react-icons/io5";
 import useIsAdmin from '../../custom hooks/useIsAdmin';
+import { MdOutlineManageAccounts } from 'react-icons/md';
 const Navbar = () => {
     const { user, logout } = useContext(AuthContex)
     const [isAdmin] = useIsAdmin()
@@ -12,19 +13,20 @@ const Navbar = () => {
     const links = <>
         <li><NavLink to={"/"}
             className={({ isActive }) =>
-                isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+                isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
             }
         >Home</NavLink></li>
         <li>{
-            !user && <NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
-        } to={'/our-courses'}>Courses</NavLink>}</li>
+            <NavLink className={({ isActive }) =>
+                isActive ? "text-teal-600  " : " hover:text-teal-600 "
+            } to={'/our-courses'}>Courses</NavLink>}</li>
+
         <li>{
-            user && <NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
-        } to={"/dashboard/my-classes"}>My Classes</NavLink>}</li>
+            <NavLink className={({ isActive }) =>
+                isActive ? "text-teal-600  " : " hover:text-teal-600 "
+            } to={"/blog"}>Blog</NavLink>}</li>
         <li><NavLink className={({ isActive }) =>
-            isActive ? "border-b-2 border-teal-600 pb-0.5 " : " hover:text-teal-600 "
+            isActive ? "text-teal-600 pb-0.5 " : " hover:text-teal-600 "
         } to={'/about-us'}>About us</NavLink></li>
 
     </>
@@ -34,14 +36,13 @@ const Navbar = () => {
     const handleLogOut = () => {
         logout()
             .then(() => {
-
             })
             .catch(err => {
                 console.log(err);
             })
     }
     return (
-        <div className="navbar fixed top-0 z-50 py-4 lg:px-20 bg-white/70 shadow-sm">
+        <div className="navbar fixed top-0 z-50 py-4 lg:px-20 bg-white/90 shadow-sm">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -58,7 +59,7 @@ const Navbar = () => {
 
             <div className="navbar-end gap-6 items-center">
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu  menu-horizontal ">
+                    <ul className="flex gap-5 justify-between items-center text-md font-semibold menu-horizontal ">
                         {links}
                     </ul>
                 </div>
@@ -70,14 +71,16 @@ const Navbar = () => {
                                 referrerPolicy="no-referrer"
                                 src={user?.photoURL}
                                 alt="user photo" /></div>
-                            <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-52 p-2 shadow">
+                            <ul tabIndex={0} className="dropdown-content font-semibold menu bg-base-100  z-[1] w-xs p-2 -right-20  mt-5 shadow">
                                 <li><Link>{user?.displayName}</Link></li>
                                 {/* todo: make role base routing */}
                                 {
-                                    isAdmin ? <ul><li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
-                                        <li><NavLink to={"/dashboard/course-management"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />Course Management</NavLink></li>
+                                    isAdmin ? <ul className='grid gap-2'><li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
+                                        <li>{
+                                            <NavLink className="hover:text-green-500 " to={"/dashboard/my-classes"}><IoBookOutline className='text-lg' />My Classes</NavLink>}</li>
+                                        <li><NavLink to={"/dashboard/course-management"} className='hover:text-green-500  '><MdOutlineManageAccounts className='text-xl' />Course Management</NavLink></li>
                                         <li><NavLink to={"/dashboard/enrollment-management"} className='hover:text-green-500  '><FaRegAddressBook className='text-lg' />Enrollment Management</NavLink></li>
-                                        </ul> : <ul>
+                                    </ul> : <ul>
                                         <li><NavLink to={"/dashboard/profile"} className='hover:text-green-500  '><FaRegUser className='text-lg' />Profile</NavLink></li>
                                         <li><NavLink to={"/dashboard/my-classes"} className='hover:text-green-500  '><IoBookOutline className='text-lg' />My classes</NavLink></li>
                                     </ul>

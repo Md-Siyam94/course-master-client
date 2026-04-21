@@ -52,13 +52,12 @@ const CourseCard = ({ course, refetch }) => {
             </figure>
             <div className="card-body items-center ">
                 <h2 className="card-title">{title}</h2>
-                <p className='opacity-60'>{description}</p>
-                <div className='flex  gap-6'>
+                <div className=' justify-start '>
                     <p className='text-lg font-semibold opacity-55'>Batch {batch}</p>
                     <p className='text-lg opacity-70'>price: {price} Tk</p>
                 </div>
-                <div className="card-actions items-center gap-5">
-                    <button className='py-2 px-6 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'><Link to={`/course-details/${_id}`}>See Details</Link></button>
+                <div className="card-actions justify-center items-center gap-5">
+                    <button className='py-2 px-6  cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'><Link to={`/course-details/${_id}`}>See Details</Link></button>
                     {
                         isAdmin && <div className='flex gap-6'>
                             <Link to={`/dashboard/update-course/${_id}`} className='py-2 px-4 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'><FaRegEdit className='text-2xl' /></Link>

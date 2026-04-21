@@ -78,7 +78,7 @@ const OurCourses = () => {
                 </div>
             </div>
             {/* map courses */}
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 justify-evenly '>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mt-6 justify-evenly '>
                 {
                     courses.map(course => <CourseCard key={course?._id} course={course}></CourseCard>)
                 }

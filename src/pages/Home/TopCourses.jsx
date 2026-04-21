@@ -22,7 +22,7 @@ export default function TopCourses() {
         // </div>
         <div className="max-w-7xl mx-auto bg-white flex items-center justify-center py-20 px-4">
             <div className="max-w-7xl w-full">
-                <SectionHeading title="Explore 40000+ Free New Online Courses" heading="Top Course Category" style="items-start text-center" ></SectionHeading>
+                <SectionHeading title="Explore 40000+ Free New Online Courses" heading="Top Course Category" style="items-center w-1/2 text-center" ></SectionHeading>
                 
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">

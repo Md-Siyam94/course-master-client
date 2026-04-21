@@ -1,19 +1,20 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import banner from "../../assets/shikho-banner.png"
+import banner from "../../assets/bannerImg.jpg"
+import PrimaryButton from '../../components/shared/PrimaryButton';
+import SectionHeading from '../../components/shared/SectionHeading';
 
 const Hero = () => {
     return (
-        <div className='lg:h-[calc(100vh-100px)]  mx-auto py-24  lg:px-28 px-6 lg:flex items-center '>
-            <div className='flex-1 '>
-                <h1 className='lg:text-7xl md:text-5xl text-3xl font-semibold '>Let's kick start your carere with us</h1>
-                <p className='opacity-60 my-5 '>Learn industry-standard design tools and unleash your creativity with our comprehensive graphics design course.</p>
-                <button className='py-2 px-5 rounded-full text-white bg-teal-600 hover:bg-teal-700 '><Link to={"/our-courses"}>See courses</Link></button>
+        <div className='lg:h-screen  lg:flex items-center  justify-between '>
+            <div className='flex-1 mx-24'>
+                <SectionHeading heading={"Learn Form Our Experts"} title={"Experience a learning platform that take you next level"} style={"items-start lg:text-6xl text-start"}></SectionHeading>
+                <PrimaryButton btnText={"Get Started"} to={"/our-courses"} style={"justify-start -mt-12"}></PrimaryButton>
             </div>
             <div className='flex-1 hidden lg:block'>
-            <img className='' src={banner} alt="learning banner" />
+                <img className='w-full rounded-l-full' src={banner} alt="learning banner" />
             </div>
-            
+
         </div>
     );
 };

@@ -19,6 +19,7 @@ import WatchModules from "../layout/WatchModules";
 import UpdateCourse from "../pages/Dashboard/Admin pages/UpdateCourse";
 import Enrollment from "../pages/Dashboard/Admin pages/Enrollment";
 import Error from "../components/Error";
+import Blog from "../pages/blog/Blog";
 
 const router = createBrowserRouter([
     {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
             {
                 path: '/about-us',
                 element: <AboutUs></AboutUs>
+            },
+            {
+                path: '/blog',
+                element: <Blog></Blog>
             },
             {
                 path: '/login',
