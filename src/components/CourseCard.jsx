@@ -50,14 +50,15 @@ const CourseCard = ({ course, refetch }) => {
                     alt="thumbnail"
                     className="rounded-xl h-[145px] w-[260px]" />
             </figure>
-            <div className="card-body items-center ">
+            <div className="card-body ">
                 <h2 className="card-title">{title}</h2>
-                <div className=' justify-start '>
-                    <p className='text-lg font-semibold opacity-55'>Batch {batch}</p>
-                    <p className='text-lg opacity-70'>price: {price} Tk</p>
+                <div className=' justify-start flex flex-row-reverse items-center'>
+                    <p className='text-sm text-orange-500 font-semibold opacity-55'>Batch {batch}</p>
+                    <p className='text-2xl font-semibold text-teal-800 opacity-70'>৳ {price}</p>
                 </div>
-                <div className="card-actions justify-center items-center gap-5">
-                    <button className='py-2 px-6  cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'><Link to={`/course-details/${_id}`}>See Details</Link></button>
+                <div className="card-actions mt-6 justify-center items-center gap-5">
+                    <button className='py-2 px-6  cursor-pointer rounded-full font-semibold border border-gray-200 hover:border-teal-600  text-[16px]'><Link to={`/course-details/${_id}`}>Enroll Now</Link></button>
+                    <button className='py-2 px-6  cursor-pointer rounded-full font-semibold border border-gray-200 hover:border-teal-600 text-[16px]'><Link to={`/course-details/${_id}`}>See Details</Link></button>
                     {
                         isAdmin && <div className='flex gap-6'>
                             <Link to={`/dashboard/update-course/${_id}`} className='py-2 px-4 cursor-pointer rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'><FaRegEdit className='text-2xl' /></Link>

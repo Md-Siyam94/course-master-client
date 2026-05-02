@@ -65,13 +65,13 @@ const Footer = () => {
               Fusce varius, dolor tempor interdum tristique bibendum.
             </p>
             <div className="space-y-3 mb-6">
-              <a href="tel:(702) 123-1478" className="flex items-center gap-3 text-2xl font-semibold text-white hover:text-cyan-400 transition-colors">
+              <a href="tel:(702) 123-1478" className="flex items-center gap-3 text-2xl font-semibold text-white hover:text-teal-400 transition-colors">
                 <Phone className="w-5 h-5 flex-shrink-0" />
-                <span>(702) 123-1478</span>
+                <span>+880 1789478967</span>
               </a>
-              <a href="mailto:info@company.com" className="flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors">
+              <a href="mailto:info@company.com" className="flex items-center gap-3 text-gray-300 hover:text-teal-400 transition-colors">
                 <Mail className="w-5 h-5 flex-shrink-0" />
-                <span>info@company.com</span>
+                <span>siyam942404@gmail.com</span>
               </a>
             </div>
             {/* <div className="flex gap-4">
