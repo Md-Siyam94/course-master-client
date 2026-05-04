@@ -1,5 +1,6 @@
 import { Mail, Phone,  ArrowRight, Calendar, Share2 } from 'lucide-react';
-
+import { Link } from 'react-router-dom';
+import EduBeeLogo from '../../assets/EduBee_logo2.png';
 
 
 const Footer = () => {
@@ -60,9 +61,9 @@ const Footer = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           <div>
-            <h4 className="text-white font-bold text-lg mb-4 uppercase">Get In Touch!</h4>
+           <Link to={"/"} className="btn btn-ghost text-2xl font-semibold">Edu<span className='text-yellow-500'>Bee</span></Link>
             <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-              Fusce varius, dolor tempor interdum tristique bibendum.
+              Learn - Grow - Succeed.
             </p>
             <div className="space-y-3 mb-6">
               <a href="tel:(702) 123-1478" className="flex items-center gap-3 text-2xl font-semibold text-white hover:text-teal-400 transition-colors">
