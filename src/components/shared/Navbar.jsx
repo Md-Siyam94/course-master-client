@@ -5,6 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
 import { IoBookOutline } from "react-icons/io5";
 import useIsAdmin from '../../custom hooks/useIsAdmin';
+import EduBeeLogo from '../../assets/EduBee_logo.png';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 const Navbar = () => {
     const { user, logout } = useContext(AuthContex)
@@ -54,7 +55,7 @@ const Navbar = () => {
                         {links}
                     </ul>
                 </div>
-                <a className="btn btn-ghost text-2xl font-semibold">SHIK<span className='text-teal-500'>HOO</span></a>
+                <Link to={"/"} className="btn btn-ghost text-2xl font-semibold"><img className='h-24 w-24 object-cover' src={EduBeeLogo} alt="EduBee Logo" /></Link>
             </div>
 
             <div className="navbar-end gap-6 items-center">

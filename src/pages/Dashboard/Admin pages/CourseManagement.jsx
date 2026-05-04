@@ -9,9 +9,9 @@ const CourseManagement = () => {
     return (
         <div>
             <div className='w-full mx-auto flex justify-end'>
-                <button className='py-3  cursor-pointer mt-6 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white flex gap-2 items-center '><FaPlus className='text-2xl' /><Link to={"/dashboard/add-course"} >Add Course</Link></button>
+                <button className='py-3 text-sm  cursor-pointer mt-6 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white flex gap-2 items-center '><FaPlus className='text-xl opacity-60' /><Link to={"/dashboard/add-course"} >Add Course</Link></button>
             </div>
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 justify-evenly '>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 mt-6 gap-4 justify-evenly '>
                 {
                     courses.map(course=> <CourseCard key={course?._id} refetch={refetch} course={course}></CourseCard>)
                 }

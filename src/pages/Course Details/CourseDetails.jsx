@@ -86,7 +86,7 @@ const CourseDetails = () => {
                 <p className='opacity-60'>{description}</p>
                 <p className='my-3  font-semibold '><span className='opacity-60'>Istructor:</span> <span className='text-lg text-teal-600'>{instructor}</span></p>
                 <p><span className='opacity-60'>Syllabus:</span> {syllabus?.join(",")}</p>
-                <p className='my-3'><span className='opacity-60'>Total classes:</span> {modules?.length}</p>
+                <p className='my-3'><span className='opacity-60'>Lessons:</span> {modules?.length}</p>
                 <p className='text-xl font-semibold opacity-75 ml-4'>{price} TK</p>
                 <button onClick={() => document.getElementById(_id).showModal()} className='py-3 cursor-pointer mt-6 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>Enroll Now</button>
             </div>

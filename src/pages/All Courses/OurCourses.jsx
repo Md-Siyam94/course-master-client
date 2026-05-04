@@ -72,8 +72,8 @@ const OurCourses = () => {
 
                 </label>
                 <div className='hidden lg:block'>
-                    <button onClick={() => setSort(sort === "asc" ? "desc" : "asc")} className='py-2 px-6 rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>{
-                        sort? "Sorted by Price": "Sort by price"
+                    <button onClick={() => setSort(sort === false ? true : false)} className='py-2 px-6 text-sm rounded-full font-semibold bg-teal-600 hover:bg-teal-700 text-white'>{
+                        sort? "Sorted by Price": "Sort by Price"
                     }</button>
                 </div>
             </div>
