@@ -5,7 +5,7 @@ import { Link, NavLink } from 'react-router-dom';
 import { AuthContex } from '../../provider/AuthProvider';
 import { IoBookOutline } from "react-icons/io5";
 import useIsAdmin from '../../custom hooks/useIsAdmin';
-import EduBeeLogo from '../../assets/EduBee_logo.png';
+import EduBeeLogo from '../../assets/EduBee_logo.2.png';
 import { MdOutlineManageAccounts } from 'react-icons/md';
 const Navbar = () => {
     const { user, logout } = useContext(AuthContex)

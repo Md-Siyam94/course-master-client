@@ -11,8 +11,8 @@ const Hero = () => {
                 <SectionHeading heading={"Learn Form Our Experts"} title={"Experience a learning platform that take you next level"} style={"items-start lg:text-6xl text-start"}></SectionHeading>
                 <PrimaryButton btnText={"Get Started"} to={"/our-courses"} style={"justify-start -mt-12"}></PrimaryButton>
             </div>
-            <div className='flex-1 hidden  lg:block'>
-                <img className='w-full  rounded-l-full' src={banner} alt="learning banner" />
+            <div className='flex-1 hidden mt-20 lg:block'>
+                <img className='w-full  rounded-l-[50%]' src={banner} alt="learning banner" />
             </div>
 
         </div>
